@@ -2,6 +2,7 @@ package com.example.phat.vnexpressnews.io;
 
 import com.example.phat.vnexpressnews.exceptions.InternalServerErrorException;
 import com.example.phat.vnexpressnews.exceptions.JacksonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public abstract class JSONHandler<T> {
@@ -22,6 +23,11 @@ public abstract class JSONHandler<T> {
     }
 
     public abstract T process(String jsonData) throws JacksonProcessingException, InternalServerErrorException;
+
+    protected int getErrorCodeFromJsonNode(JsonNode rootNode) {
+        mErrorCode = rootNode.path(ERROR_CODE).asInt(); // Unwrap error_code node and get it as integer
+        return mErrorCode;
+    }
 
 
 }

@@ -42,7 +42,7 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
         try {
             JsonNode rootNode = objectMapper.readTree(jsonData);
 
-            if (getErrorCodeFromJsonNode(rootNode) == ERROR_CODE_NO_ERRORS) {
+            if (getErrorCodeFromJsonNode(rootNode) != ERROR_CODE_NO_ERRORS) {
                 LOGE(TAG, "Something was wrong on server. Error code: " + mErrorCode);
                 throw new InternalServerErrorException("Something was wrong on Server side. Error code: ", mErrorCode);
             }
@@ -83,11 +83,6 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
 
         LOGI(TAG, articleSet.size() + " articles was returned");
         return articleSet;
-    }
-
-    private int getErrorCodeFromJsonNode(JsonNode rootNode) {
-        mErrorCode = rootNode.path(ERROR_CODE).asInt(); // Unwrap error_code node and get it as integer
-        return mErrorCode;
     }
 
 }
