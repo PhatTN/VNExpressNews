@@ -1,5 +1,7 @@
 package com.example.phat.vnexpressnews.util;
 
+import android.text.TextUtils;
+
 import com.example.phat.vnexpressnews.exceptions.JacksonProcessingException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -11,6 +13,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.IllegalFormatConversionException;
 
 import static com.example.phat.vnexpressnews.util.LogUtils.LOGD;
 import static com.example.phat.vnexpressnews.util.LogUtils.LOGE;
@@ -93,5 +96,30 @@ public class JacksonUtils {
             throw new JacksonProcessingException(e.getMessage(), parser.getCurrentLocation(), e.getCause());
         }
 
+    }
+
+    /**
+     * This method tries to parse a string into {@link JsonNode}
+     * @param jsonData The json string which will be parsed to {@link JsonNode}
+     * @return Parsed {@link JsonNode} if success
+     * @throws JacksonProcessingException if have any problem
+     */
+    public static JsonNode parse(String jsonData) throws JacksonProcessingException{
+        if (TextUtils.isEmpty(jsonData)) {
+            LOGE(TAG, "Can not parse null or empty string");
+            throw new JacksonProcessingException("Can not parse into json node from null or empty string");
+        }
+
+        try {
+            return new ObjectMapper().readTree(jsonData);
+        } catch (JsonProcessingException e) {
+            LOGD(TAG, "Can not parse json string to JsonNode using tree mode." +
+                    " Message: " + e.getMessage() + ". Location: " + e.getLocation());
+            throw new JacksonProcessingException(e.getMessage(), e.getLocation(), e.getCause());
+        } catch (IOException e) {
+            LOGD(TAG, "IOException occurs when trying to parse json string to JsonNode." +
+                    " Message: " + e.getMessage() + ". Cause: " + e.getCause());
+            throw new JacksonProcessingException(e.getMessage(), e.getCause());
+        }
     }
 }

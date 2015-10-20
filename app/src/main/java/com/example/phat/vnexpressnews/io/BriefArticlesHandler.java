@@ -1,16 +1,12 @@
 package com.example.phat.vnexpressnews.io;
 
-import android.text.TextUtils;
-
 import com.example.phat.vnexpressnews.exceptions.InternalServerErrorException;
 import com.example.phat.vnexpressnews.exceptions.JacksonProcessingException;
 import com.example.phat.vnexpressnews.model.BriefArticle;
 import com.example.phat.vnexpressnews.util.JacksonUtils;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -27,40 +23,24 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
 
     public BriefArticlesHandler() {
         super(true); // set true to tell that this data should cache into DB
-        mErrorCode = ERROR_CODE_NO_ERRORS;
     }
 
     @Override
     public Set<BriefArticle> process(String jsonData)
             throws JacksonProcessingException, InternalServerErrorException {
 
-        if (TextUtils.isEmpty(jsonData)) {
-            LOGI(TAG, "There are no returned articles");
-            return new LinkedHashSet<>();
+        JsonNode rootNode = JacksonUtils.parse(jsonData); // try to parse the string to JsonNode type
+
+        if (hasInternalServerError(rootNode)) {
+            LOGE(TAG, "Something was wrong on server. Error code: " + mErrorCode);
+            throw new InternalServerErrorException("Something was wrong on Server side. Error code: ", mErrorCode);
         }
 
-        try {
-            JsonNode rootNode = objectMapper.readTree(jsonData);
-
-            if (getErrorCodeFromJsonNode(rootNode) != ERROR_CODE_NO_ERRORS) {
-                LOGE(TAG, "Something was wrong on server. Error code: " + mErrorCode);
-                throw new InternalServerErrorException("Something was wrong on Server side. Error code: ", mErrorCode);
-            }
-
-            return parse(rootNode);
-
-        } catch (JsonProcessingException e) {
-            LOGD(TAG, "Can not parse json string to JsonNode using tree mode.");
-            throw new JacksonProcessingException("", e.getLocation(), e.getCause());
-        } catch (IOException e) {
-            LOGD(TAG, "IOException occurs when trying to parse json string to JsonNode." +
-                    " Cause: " + e.getCause() + ". Message: " + e.getMessage());
-            throw new JacksonProcessingException("", e.getCause());
-        }
+        return parse(rootNode);
     }
 
     /**
-     * Deserialize a json node into {@link BriefArticle} set.
+     * Deserialize a {@link JsonNode} into {@link BriefArticle} set.
      * Check json format which is returned from server to understand this code clearly.
      */
     private Set<BriefArticle> parse(JsonNode rootNode) throws JacksonProcessingException {
@@ -76,7 +56,7 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
                     Collection<BriefArticle> tempCollection = JacksonUtils.parse(parser, List.class, BriefArticle.class);
                     articleSet.addAll(tempCollection);
                 } else {
-                    LOGI(TAG, "Maybe JSON format has been changed. Check SRS and update this code fit JSON format");
+                    LOGD(TAG, "Maybe JSON format has been changed. Check SRS and update this code fit JSON format");
                 }
             }
         }

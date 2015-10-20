@@ -5,7 +5,11 @@ import com.example.phat.vnexpressnews.exceptions.JacksonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import static com.example.phat.vnexpressnews.util.LogUtils.LOGE;
+import static com.example.phat.vnexpressnews.util.LogUtils.makeLogTag;
+
 public abstract class JSONHandler<T> {
+    private static final String TAG = makeLogTag(JSONHandler.class);
 
     protected static final String DATA = "data";
     protected static final String ERROR_CODE = "error";
@@ -19,6 +23,7 @@ public abstract class JSONHandler<T> {
 
     public JSONHandler(boolean isCached) {
         mIsCached = isCached;
+        mErrorCode = ERROR_CODE_NO_ERRORS;
         objectMapper = new ObjectMapper();
     }
 
@@ -29,5 +34,8 @@ public abstract class JSONHandler<T> {
         return mErrorCode;
     }
 
-
+    protected boolean hasInternalServerError(JsonNode rootNode) {
+        mErrorCode = getErrorCodeFromJsonNode(rootNode);
+        return mErrorCode != ERROR_CODE_NO_ERRORS;
+    }
 }
