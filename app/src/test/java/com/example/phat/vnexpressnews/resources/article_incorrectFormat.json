@@ -1,0 +1,72 @@
+{
+  "error": 0,
+  "data": {
+    "article_type": 3,
+    "original_cate": 1003459,
+    "site_id": 1000000,
+    "title": "5 lực lượng xuống đường chống ùn tắc ở Hà Nội",
+    "lead": "Sáng 19/10, 30 người gồm cả cảnh sát cơ động, cảnh sát trật tự được huy động hướng dẫn giao thông tại nút giao Nguyễn Trãi - Khuất Duy Tiến (Thanh Xuân, Hà Nội) khiến tình trạng tắc nghẽn ở \"điểm đen\" này giảm đáng kể.",
+    "share_url": "http://vnexpress.net/photo/giao-thong/5-luc-luong-xuong-duong-chong-un-tac-o-ha-noi-3297999.html",
+    "thumbnail_url": "http://m.f32.img.vnecdn.net/2015/10/19/a-1445221119.jpg",
+    "privacy": 6,
+    "list_reference": {
+      "article": [
+        {
+          "article_type": 1,
+          "title": "Hà Nội huy động thêm 200 cảnh sát cơ động chống ùn tắc",
+          "share_url": "http://vnexpress.net/tin-tuc/thoi-su/giao-thong/ha-noi-huy-dong-them-200-canh-sat-co-dong-chong-un-tac-3297810.html",
+          "thumbnail_url": "http://m.f31.img.vnecdn.net/2015/10/18/tacduong-1200x0-4831-1445171332.jpg",
+          "article_id": 3297810
+        }
+      ]
+    },
+    "total_page": 1,
+    "publish_time": 1445229636,
+    "total_comment": 25,
+    "article_id": 3297999,
+    "content": "<p style=\"text-align:right;\">\n\t<strong>Bá Đô</strong></p>",
+    "photos":{
+      "1": {
+        "thumbnail_url": "http://m.f32.img.vnecdn.net/2015/10/19/a-1445221119.jpg",
+        "caption": "<p class=\"Normal\">\n\t<span>Theo chỉ thị của Giám đốc Công an thành phố Hà Nội, từ nay đến hết ngày 28/2/2016 (sau Tết Nguyên đán), để giảm thiểu tình trạng ùn tắc giao thông, vi phạm trật tự, sẽ huy động thêm 200 cảnh sát cơ động, 100% quân số cảnh sát giao thông, trật tự, công an phường, phối hợp với các lực lượng khác để đảm bảo an toàn giao thông, chống ùn tắc vào giờ cao điểm.</span></p>\n<p class=\"Normal\">\n\tTừ 6h30 sáng 19/10 tại các nút giao trọng điểm thường xuyên xảy ra ùn tắc đã có thêm cảnh sát trật tự, cảnh sát cơ động tới điều tiết giao thông.</p>",
+        "photo_id": 23075971
+      },
+      "2": {
+        "thumbnail_url": "http://m.f31.img.vnecdn.net/2015/10/19/IMG-7170-1445224956.jpg",
+        "caption": "<p class=\"Normal\">\n\tCông an Hà Nội huy động khoảng 200 cán bộ, chiến sĩ thuộc Trung đoàn cảnh sát cơ động tham gia hướng dẫn giao thông. Sáng nay, riêng tại nút giao Nguyễn Trãi - Khuất Duy Tiến, nơi được xem là ùn tắc nhất thủ đô, 8 chiến sĩ cảnh sát cơ động đã tới hỗ trợ cảnh sát giao thông làm nhiệm vụ. </p>",
+        "photo_id": 23075972
+      },
+      "3": {
+        "thumbnail_url": "http://m.f31.img.vnecdn.net/2015/10/19/a4-1445221121.jpg",
+        "caption": "<p class=\"Normal\">\n\tNgoài việc phân luồng, ngăn chặn hành vi vi phạm, cảnh sát cơ động còn phối hợp với cảnh sát giao thông giúp đỡ những người không may bị va chạm giao thông, đưa xe vào khu vực an toàn.</p>",
+        "photo_id": 23075973
+      }
+    },
+    "mode_view": 0,
+    "cate_parent": {
+      "parent_id": 1000000,
+      "catename": "Thời sự",
+      "catecode": "thoi-su",
+      "full_parent": "1000000",
+      "show_folder": 1,
+      "category_id": 1001005,
+      "display_order": 1
+    },
+    "list_video": [
+      {
+        "url": "http://video.vnecdn.net/video/web/mp4/360p/2015/10/19/200-canh-sat-co-dong-ha-noi-ra-duong-chong-un-tac-1445226171.mp4",
+        "caption": "200 cảnh sát cơ động Hà Nội ra đường chống ùn tắc",
+        "description": "Cảnh sát cơ động Hà Nội được huy động vào những giờ cao điểm để chống ùn tắc giao thông.",
+        "thumbnail_url": "http://img.video.vnecdn.net/web/2015/10/19/200-canh-sat-co-dong-ha-noi-ra-duong-chong-un-tac-1445226220.jpg",
+        "size_format": {
+          "240": "http://video.vnecdn.net/video/web/mp4/240p/2015/10/19/200-canh-sat-co-dong-ha-noi-ra-duong-chong-un-tac-1445226171.mp4",
+          "360": "http://video.vnecdn.net/video/web/mp4/360p/2015/10/19/200-canh-sat-co-dong-ha-noi-ra-duong-chong-un-tac-1445226171.mp4",
+          "480": "http://video.vnecdn.net/video/web/mp4/480p/2015/10/19/200-canh-sat-co-dong-ha-noi-ra-duong-chong-un-tac-1445226171.mp4",
+          "720": "http://video.vnecdn.net/video/web/mp4/2015/10/19/200-canh-sat-co-dong-ha-noi-ra-duong-chong-un-tac-1445226171.mp4"
+        },
+        "video_id": 68963,
+        "show_ad": 1
+      }
+    ]
+  }
+}
