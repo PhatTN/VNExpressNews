@@ -1,10 +1,8 @@
 package com.example.phat.vnexpressnews.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class Category {
+public class Category implements Comparable<Category> {
     @JsonProperty(value = "category_id", required = true)
     private int categoryID;
     @JsonProperty(value = "catename", required = true)
@@ -118,5 +116,10 @@ public class Category {
         result = 31 * result + parentId;
         result = 31 * result + fullParent;
         return result;
+    }
+
+    @Override
+    public int compareTo(Category another) {
+        return this.displayOrder - another.displayOrder; // ascending order
     }
 }

@@ -1,0 +1,39 @@
+{
+  "error": 0,
+  "data": [
+    {
+      "parent_id": 1000000,
+      "catename": "Thời sự",
+      "catecode": "thoi-su",
+      "full_parent": "1000000",
+      "show_folder": 1,
+      "category_id": 1001005,
+      "display_order": 1
+    },
+    {
+      "parent_id": 1000000,
+      "catename": "Thế giới",
+      "catecode": "the-gioi",
+      "full_parent": "1000000",
+      "show_folder": 1,
+      "category_id": 1001002,
+      "display_order": 2
+    },
+    {
+      "parent_id": 1000000,
+      "catename": "Góc nhìn",
+      "catecode": "goc-nhin",
+      "full_parent": "1000000",
+      "show_folder": 1,
+      "category_id": 1003450,
+      "display_order": 3
+    }
+  ],
+  "app_detail": {
+    "app_id": "c31b32",
+    "app_name": "Android",
+    "version": "6.8.6",
+    "status": 2,
+    "message": "VnExpress vừa có bản nâng cấp tính năng mới, bạn có muốn nâng cấp để trải nghiệm?"
+  }
+}
