@@ -1,7 +1,5 @@
 package com.example.phat.vnexpressnews.util;
 
-import android.text.TextUtils;
-
 import com.example.phat.vnexpressnews.exceptions.JacksonProcessingException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;
@@ -13,7 +11,6 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.IllegalFormatConversionException;
 
 import static com.example.phat.vnexpressnews.util.LogUtils.LOGD;
 import static com.example.phat.vnexpressnews.util.LogUtils.LOGE;

@@ -47,8 +47,16 @@ public class BriefArticlesHandlerTest {
     }
 
     @Test(expected = InternalServerErrorException.class)
-    public void parseJson_CorrectFormatWithErrorCodeIsNotEqualZero_ThrowsISEE() throws JacksonProcessingException, InternalServerErrorException{
+    public void parseJson_CorrectFormatWithErrorCodeIsNotEqualZero_ThrowsISEE()
+            throws JacksonProcessingException, InternalServerErrorException{
         initWithCorrectFormatJsonResourceWithErrorCodeIsNotEqualZero();
+        jsonHandler.process(jsonString);
+    }
+
+    @Test(expected = JacksonProcessingException.class)
+    public void parseJson_ANullJsonResource_ThrowsJPE()
+            throws JacksonProcessingException, InternalServerErrorException{
+        initWithANullJsonResources();
         jsonHandler.process(jsonString);
     }
 
@@ -65,5 +73,9 @@ public class BriefArticlesHandlerTest {
     private void initWithCorrectFormatJsonResourceWithErrorCodeIsNotEqualZero() {
         final String filename = "briefArticle_correctFormat_withErrorCodeIsNotEqualZero.json";
         jsonString = FileSystemUtils.loadJsonFile(filename);
+    }
+
+    private void initWithANullJsonResources() {
+        jsonString = null;
     }
 }
