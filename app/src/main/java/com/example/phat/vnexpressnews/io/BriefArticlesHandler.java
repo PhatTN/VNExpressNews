@@ -22,7 +22,7 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
     private static final String TAG = makeLogTag(BriefArticlesHandler.class);
 
     public BriefArticlesHandler() {
-        super(true); // set true to tell that this data should cache into DB
+        super(SHOULD_BE_CACHED); // set true to tell that this data should cache into DB
     }
 
     @Override
@@ -33,7 +33,7 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
 
         if (hasInternalServerError(rootNode)) {
             LOGE(TAG, "Something was wrong on server. Error code: " + mErrorCode);
-            throw new InternalServerErrorException("Something was wrong on Server side. Error code: ", mErrorCode);
+            throw new InternalServerErrorException("Something was wrong on Server side.", mErrorCode);
         }
 
         return parse(rootNode);

@@ -5,11 +5,13 @@ import com.example.phat.vnexpressnews.exceptions.JacksonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static com.example.phat.vnexpressnews.util.LogUtils.LOGE;
 import static com.example.phat.vnexpressnews.util.LogUtils.makeLogTag;
 
 public abstract class JSONHandler<T> {
     private static final String TAG = makeLogTag(JSONHandler.class);
+
+    protected static final boolean SHOULD_BE_NOT_CACHED = false;
+    protected static final boolean SHOULD_BE_CACHED = true;
 
     protected static final String DATA = "data";
     protected static final String ERROR_CODE = "error";

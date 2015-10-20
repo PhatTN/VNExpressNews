@@ -19,7 +19,7 @@ public class FullArticleHandler extends JSONHandler<Article> {
     private static final String TAG = makeLogTag(FullArticleHandler.class);
 
     public FullArticleHandler() {
-        super(false); // set false to indicate this should be not backed up into DB
+        super(SHOULD_BE_NOT_CACHED); // set false to indicate this should be not cached into DB
     }
 
     @Override
@@ -30,7 +30,7 @@ public class FullArticleHandler extends JSONHandler<Article> {
 
         if (hasInternalServerError(rootNode)) {
             LOGE(TAG, "Something was wrong on server. Error code: " + mErrorCode);
-            throw new InternalServerErrorException("Something was wrong on Server side. Error code: ", mErrorCode);
+            throw new InternalServerErrorException("Something was wrong on Server side.", mErrorCode);
         }
         return parse(rootNode);
     }
@@ -58,7 +58,7 @@ public class FullArticleHandler extends JSONHandler<Article> {
         LOGI(TAG, "Success when trying to parse JsonNode type to a Article type." +
                 " Article title is: " + article.getTitle());
 
-        // Because list_reference node is different in order to auto parsed by Jackson
+        // Because list_reference node is difficult in order to auto parsed by Jackson
         // So we'll do it by hand
         // First, we unwrap list_reference node, continue unwrap article node inside list_reference node and turn it into iterator
         JsonNode listReferenceArticleNode = articleNode.path(LIST_REFERENCE).path(ARTICLE);
