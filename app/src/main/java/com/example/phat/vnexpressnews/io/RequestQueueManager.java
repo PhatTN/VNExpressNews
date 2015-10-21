@@ -99,8 +99,8 @@ public class RequestQueueManager {
         }
 
         if (handler == null) {
-            LOGE(TAG, "The handler must not null");
-            throw new NullPointerException("The handler must not null");
+            LOGE(TAG, "The handler must be not null");
+            throw new NullPointerException("The handler must be not null");
         }
 
         // Constructs a new request, and let it handle anything else :D
