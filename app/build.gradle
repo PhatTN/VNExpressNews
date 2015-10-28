@@ -37,7 +37,8 @@ dependencies {
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.6.2'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.2'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'org.apache.httpcomponents:httpclient-android:4.3.5.1'
+    compile 'com.google.android.gms:play-services-identity:8.1.0'
+    compile 'com.google.android.gms:play-services-plus:8.1.0'
     compile files('libs/jsoup-1.8.3.jar')
     compile files('libs/volley.jar')
     testCompile 'junit:junit:4.12'
