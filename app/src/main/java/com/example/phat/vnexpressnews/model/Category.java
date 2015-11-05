@@ -1,8 +1,11 @@
 package com.example.phat.vnexpressnews.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Category implements Comparable<Category> {
+public class Category implements Comparable<Category>, Parcelable {
     @JsonProperty(value = "category_id", required = true)
     private int categoryID;
     @JsonProperty(value = "catename", required = true)
@@ -21,6 +24,14 @@ public class Category implements Comparable<Category> {
     public Category() {
     }
 
+    /**
+     * This constructor for quickly create new instance of Category
+     */
+    public Category(int categoryID, String categoryName) {
+        this.categoryID = categoryID;
+        this.categoryName = categoryName;
+    }
+
     public Category(@JsonProperty("category_id") int categoryID,
                     @JsonProperty("catename") String categoryName,
                     @JsonProperty("catecode") String categoryCode,
@@ -36,6 +47,28 @@ public class Category implements Comparable<Category> {
         this.showFolder = showFolder;
         this.displayOrder = displayOrder;
     }
+
+    protected Category(Parcel in) {
+        categoryID = in.readInt();
+        categoryName = in.readString();
+        categoryCode = in.readString();
+        parentId = in.readInt();
+        fullParent = in.readInt();
+        showFolder = in.readInt();
+        displayOrder = in.readInt();
+    }
+
+    public static final Creator<Category> CREATOR = new Creator<Category>() {
+        @Override
+        public Category createFromParcel(Parcel in) {
+            return new Category(in);
+        }
+
+        @Override
+        public Category[] newArray(int size) {
+            return new Category[size];
+        }
+    };
 
     public int getCategoryID() {
         return categoryID;
@@ -121,5 +154,21 @@ public class Category implements Comparable<Category> {
     @Override
     public int compareTo(Category another) {
         return this.displayOrder - another.displayOrder; // ascending order
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(categoryID);
+        dest.writeString(categoryName);
+        dest.writeString(categoryCode);
+        dest.writeInt(parentId);
+        dest.writeInt(fullParent);
+        dest.writeInt(showFolder);
+        dest.writeInt(displayOrder);
     }
 }

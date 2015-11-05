@@ -10,7 +10,7 @@
     <string name="navdrawer_item_home">Trang Nhất</string>
     <string name="navdrawer_item_news">Tin Tức</string>
     <string name="navdrawer_item_the_world">Thế Giới</string>
-    <string name="navdrawer_item_the_view">Góc Nhìn</string>
+    <string name="navdrawer_item_respective">Góc Nhìn</string>
     <string name="navdrawer_item_business">Kinh Doanh</string>
     <string name="navdrawer_item_entertainment">Giải Trí</string>
     <string name="navdrawer_item_sport">Thể Thao</string>
@@ -21,9 +21,26 @@
     <string name="navdrawer_item_travel">Du Lịch</string>
     <string name="navdrawer_item_science">Khoa Học</string>
     <string name="navdrawer_item_digitization">Số Hóa</string>
-    <string name="navdrawer_item_vehical">Xe</string>
+    <string name="navdrawer_item_vehicle">Xe</string>
     <string name="navdrawer_item_community">Cộng Đồng</string>
     <string name="navdrawer_item_confidence">Tâm Sự</string>
     <string name="navdrawer_item_video">Video</string>
     <string name="navdrawer_item_funny">Cười</string>
+    <string name="navdrawer_item_settings">Thiết Lập</string>
+    <string name="navdrawer_item_login">Đăng Nhập</string>
+    <string name="navdrawer_item_logout">Đăng Xuất</string>
+
+    <!-- Accessibility description for navigation drawer -->
+    <string name="navdrawer_description">This navigation used to switch between categories, access settings or login/logout</string>
+
+    <!-- Messages display to user -->
+    <string name="no_network_connection">Unable to reach the VNExpress servers. Please check your connection and try again.</string>
+
+    <!-- Content description for Image View -->
+    <string name="home_logo">VN Express News</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_detail_article">DetailArticleActivity</string>
 </resources>

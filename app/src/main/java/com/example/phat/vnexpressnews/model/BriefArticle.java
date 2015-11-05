@@ -28,7 +28,6 @@ public class BriefArticle {
     private int totalComment;
     @JsonProperty(value = "publish_time", required = true)
     private long publishTime;
-    private long createdTime;
 
     public BriefArticle() {
     }
@@ -143,14 +142,6 @@ public class BriefArticle {
 
     public void setPublishTime(long publishTime) {
         this.publishTime = publishTime;
-    }
-
-    public long getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(long createdTime) {
-        this.createdTime = createdTime;
     }
 
     @Override

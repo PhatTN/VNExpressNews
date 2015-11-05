@@ -8,6 +8,8 @@ public class Config {
     // Is this an internal dogfood build?
     public static final boolean IS_DOGFOOD_BUILD = false;
 
+    public static final String PACKAGE_NAME = "com.example.phat.vnexpressnews";
+
     // Need this to access API
     public static final String APP_ID = "c31b32";
 
@@ -15,8 +17,11 @@ public class Config {
     public static final String BASE_URL_API = "http://api3.vnexpress.net/";
     public static final String BASE_COMMENT_URL_API = "http://usi.saas.vnexpress.net/";
 
-    // List of category id
+    // List of default category id
     public static final int DEFAULT_CATEGORY_ID_TOP_NEWS = -1;
+    public static final int DEFAULT_CATEGORY_SETTINGS_ID = -2;
+    public static final int DEFAULT_CATEGORY_LOGIN_ID = -3;
+    public static final int DEFAULT_CATEGORY_LOGOUT_ID = -4;
     public static final int DEFAULT_CATEGORY_ID_NEWS = 1001005;
     public static final int DEFAULT_CATEGORY_ID_THE_WORLD = 1001002;
     public static final int DEFAULT_CATEGORY_ID_PERSPECTIVE = 1003450;
