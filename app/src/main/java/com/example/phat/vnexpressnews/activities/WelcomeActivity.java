@@ -41,7 +41,7 @@ public class WelcomeActivity extends AppCompatActivity
     private static final String REQUEST_TAG_CATEGORY_lIST =
             Config.PACKAGE_NAME + ".activities.REQUEST_TAG_CATEGORY_LIST";
 
-    // Indicates that will displays the splash screen at least 3 seconds long.
+    // Indicates that will displays the splash screen at least 2 seconds long.
     private static final int MINIMUM_SPLASH_TIME_OUT = 2000;
     private static final int SOCKET_TIME_OUT = 5000;
 

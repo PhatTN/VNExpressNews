@@ -10,6 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.example.phat.vnexpressnews.util.LogUtils.LOGD;
 import static com.example.phat.vnexpressnews.util.LogUtils.LOGE;
 import static com.example.phat.vnexpressnews.util.LogUtils.LOGI;
 import static com.example.phat.vnexpressnews.util.LogUtils.makeLogTag;
@@ -191,7 +192,6 @@ public class APIEndpointBuilder {
                 throw new IllegalArgumentException("Can not found this argument in APIEndpointType: Argument: " + mType);
         }
         String result = mAPIEndpoint.buildAPIEndpoint();
-        LOGI(TAG, "Build API Endpoint successful. Endpoint: " +result);
         return result;
     }
 
@@ -272,7 +272,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build Folder List API Endpoint successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());
@@ -307,7 +307,7 @@ public class APIEndpointBuilder {
                 subRequestParameters.put(CATE_ID_NAME, String.valueOf(SITE_ID_VALUE));
                 subRequestParameters.put(LIMIT_NAME, String.valueOf(Config.NUMBER_OF_TOP_STORY_ARTICLE_));
                 String topStoryQueryString = URLUtils.buildSubURL(mSubPath, subRequestParameters);
-                LOGI(TAG, "Build top story query string successful. Query string: " + topStoryQueryString);
+                LOGD(TAG, "Build top story query string successful. Query string: " + topStoryQueryString);
                 valuesApiRequest.add(topStoryQueryString);
 
                 // Build query string for requesting perspective category
@@ -317,7 +317,7 @@ public class APIEndpointBuilder {
                 subRequestParameters.put(LIMIT_NAME, String.valueOf(Config.NUMBER_OF_PERSPECTIVE_ARTICLE));
                 subRequestParameters.put(OPTION_NAME, "object");
                 String perspectiveQueryString = URLUtils.buildSubURL(mSubPath, subRequestParameters);
-                LOGI(TAG, "Build perspective category query string successful. Query string: " + perspectiveQueryString);
+                LOGD(TAG, "Build perspective category query string successful. Query string: " + perspectiveQueryString);
                 valuesApiRequest.add(perspectiveQueryString);
 
                 // Build query string for requesting video
@@ -327,7 +327,7 @@ public class APIEndpointBuilder {
                 subRequestParameters.put(CATE_ID_NAME, String.valueOf(SITE_ID_VALUE));
                 subRequestParameters.put(LIMIT_NAME, String.valueOf(Config.NUMBER_OF_VNE_VIDEO_ARTICLE));
                 String videoQueryString = URLUtils.buildSubURL(mSubPath, subRequestParameters);
-                LOGI(TAG, "Build video query string successful. Query string: " + videoQueryString);
+                LOGD(TAG, "Build video query string successful. Query string: " + videoQueryString);
                 valuesApiRequest.add(videoQueryString);
 
                 // Build query string for other category
@@ -337,7 +337,7 @@ public class APIEndpointBuilder {
                 subRequestParameters.put(CATE_ID_NAME, categoryIds);
                 subRequestParameters.put(LIMIT_NAME, String.valueOf(Config.NUMBER_OF_EACH_OTHER_ARTICLE));
                 String otherCategoryQueryString = URLUtils.buildSubURL(mSubPath, subRequestParameters);
-                LOGI(TAG, "Build other categories query string successful. Query string: " + otherCategoryQueryString);
+                LOGD(TAG, "Build other categories query string successful. Query string: " + otherCategoryQueryString);
                 valuesApiRequest.add(otherCategoryQueryString);
 
                 // Build query string for requesting photo
@@ -347,7 +347,7 @@ public class APIEndpointBuilder {
                 subRequestParameters.put(CATE_ID_NAME, String.valueOf(SITE_ID_VALUE));
                 subRequestParameters.put(LIMIT_NAME, String.valueOf(Config.NUMBER_OF_VNE_PHOTO_ARTICLE));
                 String photoQueryString = URLUtils.buildSubURL(mSubPath, subRequestParameters);
-                LOGI(TAG, "Build photo query string successful. Query string: " + photoQueryString);
+                LOGD(TAG, "Build photo query string successful. Query string: " + photoQueryString);
                 valuesApiRequest.add(photoQueryString);
 
                 // Creates first name and value pair of query string. It will format like: api[]=....&api[]=....
@@ -358,7 +358,7 @@ public class APIEndpointBuilder {
 
                 // Finally, build API Endpoint
                 String finalUrl = URLUtils.buildComplexURL(mUrl, requestParameters);
-                LOGI(TAG, "Build API Endpoint successful. API Endpoint: " + finalUrl);
+                LOGI(TAG, "Build Top News API Endpoint successful. API Endpoint: " + finalUrl);
                 return finalUrl;
 
 
@@ -446,7 +446,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build Perspective API Endpoint successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());
@@ -473,7 +473,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build Top Photos API Endpoint successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());
@@ -506,7 +506,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build NewsWithCategory API Endpoint successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());
@@ -539,7 +539,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build DetailFromArticle API Endpoint successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());
@@ -573,7 +573,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build PerspectiveDetailFromArticle API Endpoint successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());
@@ -620,7 +620,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build GetComments API Endpoint successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());
@@ -639,6 +639,7 @@ public class APIEndpointBuilder {
         public String buildAPIEndpoint() {
             // Just return url, since this API Endpoint is POST type.
             // All parameters will added in data-form. So, we just need return url
+            LOGI(TAG, "Build PostComment API Endpoint successful. Built URL: " + mUrl);
             return mUrl;
         }
     }
@@ -665,7 +666,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build GetTotalComments successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());
@@ -691,7 +692,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build SearchNews API Endpoint successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());
@@ -723,7 +724,7 @@ public class APIEndpointBuilder {
 
             try {
                 String finalUrl = URLUtils.buildURL(mUrl, requestParameters);
-                LOGI(TAG, "Build successful. Built URL: " + finalUrl);
+                LOGI(TAG, "Build GetPostsOfAuthor API Endpoint successful. Built URL: " + finalUrl);
                 return finalUrl;
             } catch (URISyntaxException e) {
                 LOGE(TAG, "Passed URL is not valid. URL: " + mUrl, e.getCause());

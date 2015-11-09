@@ -8,7 +8,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.phat.vnexpressnews.util.LogUtils.LOGI;
 import static com.example.phat.vnexpressnews.util.LogUtils.makeLogTag;
 
 /**
@@ -62,7 +61,6 @@ public class URLUtils {
 
         String builtUrl = uriBuilder.build().toString();
 
-        LOGI(TAG, "Build url successful. Url is: " +builtUrl);
         return builtUrl;
     }
 
@@ -98,7 +96,6 @@ public class URLUtils {
 
         String builtUrl = uriBuilder.build().toString();
 
-        LOGI(TAG, "Build sub url successful. Sub Url is: " +builtUrl);
         return builtUrl;
     }
 
@@ -126,7 +123,6 @@ public class URLUtils {
         }
 
         String builtUrl = uriBuilder.build().toString();
-        LOGI(TAG, "Build url successful. Url is: " +builtUrl);
         return builtUrl;
     }
 
@@ -173,7 +169,6 @@ public class URLUtils {
 
         String builtUrl = uriBuilder.build().toString();
 
-        LOGI(TAG, "Build url successful. Url is: " +builtUrl);
         return builtUrl;
     }
 }
