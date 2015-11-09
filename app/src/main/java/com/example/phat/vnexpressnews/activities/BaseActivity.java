@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import com.example.phat.vnexpressnews.Config;
 import com.example.phat.vnexpressnews.R;
 import com.example.phat.vnexpressnews.model.Category;
+import com.example.phat.vnexpressnews.util.ImageLoader;
 import com.example.phat.vnexpressnews.util.NavDrawerUtils;
 
 import java.util.List;
@@ -47,6 +48,8 @@ public abstract class BaseActivity extends AppCompatActivity implements
     protected static final int MENU_GROUP_ID_CATEGORY = 100;
     protected static final int MENU_GROUP_ID_SETTINGS = 101;
 
+    protected ImageLoader mImageLoader;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,8 @@ public abstract class BaseActivity extends AppCompatActivity implements
         if (extras != null && mCategoryList == null) {
             mCategoryList = extras.getParcelableArrayList(CATEGORY_LIST_KEY);
         }
+
+        mImageLoader = new ImageLoader(this);
     }
 
     @Override

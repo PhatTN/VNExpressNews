@@ -11,7 +11,7 @@
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:contentDescription="@string/home_logo"
+        android:contentDescription="@string/content_description_home_logo"
         android:src="@drawable/logo_home_large"/>
 
 </RelativeLayout>
