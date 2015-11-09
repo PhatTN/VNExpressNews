@@ -4,6 +4,7 @@ import android.test.suitebuilder.annotation.MediumTest;
 
 import com.example.phat.vnexpressnews.exceptions.InternalServerErrorException;
 import com.example.phat.vnexpressnews.exceptions.JacksonProcessingException;
+import com.example.phat.vnexpressnews.io.BriefArticlesHandler.HandlerType;
 import com.example.phat.vnexpressnews.model.BriefArticle;
 import com.example.phat.vnexpressnews.util.FileSystemUtils;
 
@@ -15,6 +16,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
@@ -22,60 +24,118 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(MockitoJUnitRunner.class)
 public class BriefArticlesHandlerTest {
 
-    private String jsonString;
-    private JSONHandler<Set<BriefArticle>> jsonHandler;
+    private String mJsonString;
+    private JSONHandler<Set<BriefArticle>> mJsonHandler;
 
     @Before
-    public void createJsonHandler() {
-        jsonHandler = new BriefArticlesHandler();
+    public void reset() {
+        mJsonString = null;
     }
 
     @Test
-    public void parseJson_CorrectFormat_ReturnsFalse() throws JacksonProcessingException, InternalServerErrorException{
-
+    public void parseJson_TopNewsType_CorrectFormat_ReturnsFalse()
+            throws JacksonProcessingException, InternalServerErrorException{
+        mJsonHandler = new BriefArticlesHandler(HandlerType.TOP_NEWS);
         initWithCorrectFormatJsonResource();
 
-        Set<BriefArticle> set = jsonHandler.process(jsonString);
+        Set<BriefArticle> set = mJsonHandler.process(mJsonString);
 
         assertThat(set.isEmpty(), is(false));
     }
 
     @Test(expected = JacksonProcessingException.class)
-    public void parseJson_InCorrectFormat_ThrowsJPE() throws JacksonProcessingException, InternalServerErrorException{
+    public void parseJson_TopNewsType_InCorrectFormat_ThrowsJPE()
+            throws JacksonProcessingException, InternalServerErrorException{
+        mJsonHandler = new BriefArticlesHandler(HandlerType.TOP_NEWS);
         initWithInCorrectFormatJsonResource();
-        jsonHandler.process(jsonString);
+        mJsonHandler.process(mJsonString);
     }
 
     @Test(expected = InternalServerErrorException.class)
-    public void parseJson_CorrectFormatWithErrorCodeIsNotEqualZero_ThrowsISEE()
+    public void parseJson_TopNewsType_CorrectFormatWithErrorCodeIsNotEqualZero_ThrowsISEE()
             throws JacksonProcessingException, InternalServerErrorException{
+        mJsonHandler = new BriefArticlesHandler(HandlerType.TOP_NEWS);
         initWithCorrectFormatJsonResourceWithErrorCodeIsNotEqualZero();
-        jsonHandler.process(jsonString);
+        mJsonHandler.process(mJsonString);
     }
 
     @Test(expected = JacksonProcessingException.class)
-    public void parseJson_ANullJsonResource_ThrowsJPE()
+    public void parseJson_TopNewsType_NullJsonResource_ThrowsJPE()
             throws JacksonProcessingException, InternalServerErrorException{
-        initWithANullJsonResources();
-        jsonHandler.process(jsonString);
+        mJsonHandler = new BriefArticlesHandler(HandlerType.TOP_NEWS);
+        initWithNullJsonResources();
+        mJsonHandler.process(mJsonString);
+    }
+
+    @Test
+    public void parseJson_newsWithCategoryType_CorrectFormat_ReturnsFalse()
+            throws JacksonProcessingException, InternalServerErrorException{
+
+        // Load mock data
+        final String filename = "briefArticle_newsWithCategory_correctFormat.json";
+        loadJsonFile(filename);
+
+        mJsonHandler = new BriefArticlesHandler(HandlerType.NEWS_WITH_CATEGORY);
+        Set<BriefArticle> set = mJsonHandler.process(mJsonString);
+
+        assertThat(set.isEmpty(), is(false));
+    }
+
+    @Test
+    public void parseJson_newsWithCategoryType_InCorrectFormat_ThrowsJPE()
+            throws JacksonProcessingException, InternalServerErrorException{
+        // Load mock data
+        final String filename = "briefArticle_newsWithCategory_incorrectFormat.json";
+        loadJsonFile(filename);
+
+        mJsonHandler = new BriefArticlesHandler(HandlerType.NEWS_WITH_CATEGORY);
+        Set<BriefArticle> set = mJsonHandler.process(mJsonString);
+        assertThat(set.isEmpty(), is(true));
+    }
+
+    @Test(expected = InternalServerErrorException.class)
+    public void parseJson_newsWithCategoryType_CorrectFormatWithErrorCodeIsNotEqualZero_ThrowsISEE()
+            throws JacksonProcessingException, InternalServerErrorException{
+        // Load mock data
+        final String filename = "briefArticle_newsWithCategory_correctFormat_withErrorCodeIsNotEqualZero.json";
+        loadJsonFile(filename);
+
+        mJsonHandler = new BriefArticlesHandler(HandlerType.NEWS_WITH_CATEGORY);
+        mJsonHandler.process(mJsonString);
+    }
+
+    @Test(expected = JacksonProcessingException.class)
+    public void parseJson_newsWithCategoryType_NullJsonResource_ThrowsJPE()
+            throws JacksonProcessingException, InternalServerErrorException{
+        mJsonHandler = new BriefArticlesHandler(HandlerType.NEWS_WITH_CATEGORY);
+        initWithNullJsonResources();
+        mJsonHandler.process(mJsonString);
     }
 
     private void initWithCorrectFormatJsonResource() {
-        final String filename = "briefArticle_correctFormat.json";
-        jsonString = FileSystemUtils.loadJsonFile(filename);
+        final String filename = "briefArticle_topNews_correctFormat.json";
+        mJsonString = FileSystemUtils.loadJsonFile(filename);
+        assertThat("Can not load JSON file " + filename, mJsonString, is(notNullValue()));
     }
 
     private void initWithInCorrectFormatJsonResource() {
-        final String filename = "briefArticle_IncorrectFormat.json";
-        jsonString = FileSystemUtils.loadJsonFile(filename);
+        final String filename = "briefArticle_topNews_IncorrectFormat.json";
+        mJsonString = FileSystemUtils.loadJsonFile(filename);
+        assertThat("Can not load JSON file " + filename, mJsonString, is(notNullValue()));
     }
 
     private void initWithCorrectFormatJsonResourceWithErrorCodeIsNotEqualZero() {
-        final String filename = "briefArticle_correctFormat_withErrorCodeIsNotEqualZero.json";
-        jsonString = FileSystemUtils.loadJsonFile(filename);
+        final String filename = "briefArticle_topNews_correctFormat_withErrorCodeIsNotEqualZero.json";
+        mJsonString = FileSystemUtils.loadJsonFile(filename);
+        assertThat("Can not load JSON file " + filename, mJsonString, is(notNullValue()));
     }
 
-    private void initWithANullJsonResources() {
-        jsonString = null;
+    private void initWithNullJsonResources() {
+        mJsonString = null;
+    }
+
+    private void loadJsonFile(String filename) {
+        mJsonString = FileSystemUtils.loadJsonFile(filename);
+        assertThat("Can not load JSON file " + filename, mJsonString, is(notNullValue()));
     }
 }
