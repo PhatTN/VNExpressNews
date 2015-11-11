@@ -1,17 +1,76 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Only needed for pre-L -->
+        <item name="android:editTextBackground">@drawable/edit_text</item>
+        <item name="android:editTextStyle">@style/Widget.VNExpress.EditText</item>
+    </style>
+
+    <style name="BaseWidget" parent="Theme.AppCompat.NoActionBar" />
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="Theme.VNExpress.Base" parent="BaseTheme">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-    <style name="AppTheme.NoActionBar">
+
         <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <item name="android:windowContentOverlay">@null</item>
     </style>
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.VNExpress" parent="Theme.VNExpress.Base" />
+
+    <style name="Theme.VNExpress.Widget" parent="BaseWidget" />
+
+    <style name="Toolbar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/toolbar_text_color_primary</item>
+        <item name="android:textColorSecondary">@color/toolbar_text_color_secondary</item>
+    </style>
+    <style name="Toolbar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Activities -->
+    <style name="Theme.VNExpress.Welcome" parent="Theme.VNExpress">
+        <item name="android:windowBackground">@color/white_background</item>
+    </style>
+
+    <style name="Theme.VNExpress.BrowseNews">
+        <item name="android:windowBackground">@color/app_background</item>
+    </style>
+
+    <style name="Theme.VNExpress.DetailArticle">
+        <item name="android:windowBackground">@color/white_background</item>
+    </style>
+
+    <!-- Body content -->
+    <style name="Widget.VNExpress.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/edit_text</item>
+    </style>
+
+    <style name="TextAppearance.BriefArticle.Title" parent="">
+        <item name="android:textSize">@dimen/app_text_size_medium</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_light</item>
+        <item name="android:textColor">@color/article_title_text</item>
+        <item name="android:maxLines">@integer/article_title_maxLines</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="TextAppearance.BriefArticle.Title.Main" parent="TextAppearance.BriefArticle.Title">
+        <item name="android:textColor">@color/main_article_title_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:maxLines">@integer/article_title_main_maxLines</item>
+    </style>
+
+    <style name="TextAppearance.BriefArticle.Title.Perspective" parent="TextAppearance.BriefArticle.Title">
+        <item name="android:textSize">@dimen/app_text_size_xxlarge</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:maxLines">@integer/article_title_main_maxLines</item>
+    </style>
+
+    <!-- Progress bar -->
+    <style name="ProgressBar.Indeterminate" parent="Widget.AppCompat.ProgressBar" />
 
 </resources>

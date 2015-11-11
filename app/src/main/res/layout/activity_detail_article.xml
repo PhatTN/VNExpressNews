@@ -4,25 +4,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context=".BrowseNewsActivity">
+    tools:context="com.example.phat.vnexpressnews.activities.DetailArticleActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar_layout"
         android:layout_height="@dimen/appBarLayout_height"
         android:layout_width="match_parent"
+        android:background="@color/white_background"
         android:fitsSystemWindows="true"
         android:theme="@style/Toolbar.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar_layout"
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="?attr/colorPrimary"
-            android:fitsSystemWindows="true">
+            app:contentScrim="?attr/colorPrimary">
 
             <ImageView
-                android:id="@+id/brief_article_thumbnail"
+                android:id="@+id/article_thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -33,7 +34,7 @@
                 android:contentDescription="@string/content_description_article_thumbnail"/>
 
             <TextView
-                android:id="@+id/biref_article_title"
+                android:id="@+id/article_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|start"
@@ -45,26 +46,22 @@
                 android:padding="@dimen/cardView_margin"
                 android:background="@color/main_article_title_background"
                 android:textAppearance="@style/TextAppearance.BriefArticle.Title.Main"
-                android:transitionName="@string/transition_name_article_title"/>
+                android:transitionName="@string/transition_name_article_title" />
 
             <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
-                android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
-                android:background="@drawable/toolbar_transparent_background"
-                android:theme="@style/Toolbar.AppBarOverlay"
-                app:popupTheme="@style/Toolbar.PopupOverlay"
-                app:layout_collapseMode="pin"/>
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/Toolbar.PopupOverlay" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_browse_news" />
+    <include layout="@layout/content_detail_article" />
 
-    <android.support.v4.widget.ContentLoadingProgressBar
-        android:id="@+id/progress_bar"
-        style="@style/ProgressBar.Indeterminate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true" />
+    <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_dialog_email" />
+
 </android.support.design.widget.CoordinatorLayout>

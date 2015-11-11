@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <!-- Color Palette -->
+    <!-- Color Palette - Used to display as icon in navdrawer -->
     <color name="color_red">#F44336</color>
     <color name="color_red_dark">#D32F2F</color>
     <color name="color_indigo">#3F51B5</color>
@@ -43,4 +43,21 @@
     <color name="color_light_blue_dark">#0288D1</color>
     <color name="color_blue_grey_dark">#607D8B</color>
     <color name="color_blue_grey">#455A64</color>
+    <color name="color_transparent">#09000000</color>
+
+    <!-- App colors -->
+    <color name="app_background">#fffafafa</color>
+    <color name="toolbar_background_start_color">@android:color/transparent</color>
+    <color name="toolbar_background_end_color">#40000000</color>
+    <color name="imageView_background">#DDDCE4</color>
+
+    <!-- Text colors -->
+    <color name="toolbar_text_color_primary">#ffffffff</color>
+    <color name="toolbar_text_color_secondary">#deffffff</color>
+    <color name="article_title_text">#FF000000</color>
+    <color name="main_article_title_text">#FFFFFFFF</color>
+    <color name="main_article_title_background">#DB2913</color>
+
+    <!-- Activities colors -->
+    <color name="white_background">#ffffffff</color>
 </resources>

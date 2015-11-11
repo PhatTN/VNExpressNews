@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text maxLines -->
+    <integer name="article_title_maxLines">3</integer>
+    <integer name="article_title_main_maxLines">2</integer>
+</resources>
