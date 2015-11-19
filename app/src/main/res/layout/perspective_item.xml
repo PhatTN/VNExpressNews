@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
-    android:layout_margin="@dimen/cardView_margin"
+    android:layout_margin="@dimen/cardview_margin"
     tools:context=".BrowseNewsActivity">
 
     <LinearLayout
@@ -28,6 +28,7 @@
             android:layout_height="@dimen/brief_article_thumbnail_height"
             android:scaleType="fitCenter"
             android:background="@android:color/white"
+            android:transitionName="@string/transition_name_article_thumbnail"
             android:contentDescription="@string/content_description_article_thumbnail"/>
 
     </LinearLayout>

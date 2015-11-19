@@ -35,42 +35,78 @@
         <item name="android:windowBackground">@color/white_background</item>
     </style>
 
-    <style name="Theme.VNExpress.BrowseNews">
+    <style name="Theme.VNExpress.BrowseNews" parent="Theme.VNExpress">
         <item name="android:windowBackground">@color/app_background</item>
     </style>
 
-    <style name="Theme.VNExpress.DetailArticle">
+    <style name="Theme.VNExpress.DetailArticle" parent="Theme.VNExpress">
         <item name="android:windowBackground">@color/white_background</item>
     </style>
+
+    <style name="Theme.VNExpress.Comment" parent="Theme.VNExpress" />
 
     <!-- Body content -->
     <style name="Widget.VNExpress.EditText" parent="Widget.AppCompat.EditText">
         <item name="android:background">@drawable/edit_text</item>
     </style>
 
-    <style name="TextAppearance.BriefArticle.Title" parent="">
+    <style name="TextAppearance.Default" parent="">
         <item name="android:textSize">@dimen/app_text_size_medium</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_regular</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance.BriefArticle.Title" parent="TextAppearance.Default">
         <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_light</item>
         <item name="android:textColor">@color/article_title_text</item>
-        <item name="android:maxLines">@integer/article_title_maxLines</item>
-        <item name="android:ellipsize">end</item>
     </style>
 
     <style name="TextAppearance.BriefArticle.Title.Main" parent="TextAppearance.BriefArticle.Title">
         <item name="android:textColor">@color/main_article_title_text</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:maxLines">@integer/article_title_main_maxLines</item>
     </style>
 
     <style name="TextAppearance.BriefArticle.Title.Perspective" parent="TextAppearance.BriefArticle.Title">
         <item name="android:textSize">@dimen/app_text_size_xxlarge</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:maxLines">@integer/article_title_main_maxLines</item>
+    </style>
+
+    <style name="TextAppearance.Article.Title" parent="TextAppearance.Default">
+        <item name="android:textSize">@dimen/app_text_size_xxlarge</item>
+        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_condensed</item>
+        <item name="android:textColor">@color/article_title_text</item>
+    </style>
+
+    <style name="TextAppearance.Article.Lead" parent="TextAppearance.Default">
+        <item name="android:textStyle">italic</item>
+        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_condensed</item>
+        <item name="android:textColor">@color/article_lead_text_color</item>
     </style>
 
     <!-- Progress bar -->
     <style name="ProgressBar.Indeterminate" parent="Widget.AppCompat.ProgressBar" />
+
+    <!-- Paragraph -->
+    <style name="TextAppearance.Paragraph" parent="TextAppearance.Default">
+        <item name="android:textSize">@dimen/app_text_size_large</item>
+        <item name="android:textColor">@color/paragraph_text_color</item>
+        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_condensed</item>
+    </style>
+
+    <style name="TextAppearance.Paragraph.Extract" />
+
+    <style name="TextAppearance.Paragraph.AnnotationText" />
+
+    <style name="LineSeparator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/line_separator_height</item>
+        <item name="android:background">@color/sub_header_text_color</item>
+        <item name="android:layout_marginTop">@dimen/line_separator_horizontal_margin</item>
+        <item name="android:layout_marginBottom">@dimen/line_separator_horizontal_margin</item>
+    </style>
+    <style name="Theme.VNExpress.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.VNExpress.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

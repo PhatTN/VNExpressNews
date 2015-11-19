@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.phat.vnexpressnews.Config;
 import com.example.phat.vnexpressnews.R;
 import com.example.phat.vnexpressnews.model.BriefArticle;

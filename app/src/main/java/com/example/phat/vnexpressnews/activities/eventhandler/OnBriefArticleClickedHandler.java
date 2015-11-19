@@ -37,17 +37,14 @@ public class OnBriefArticleClickedHandler implements ItemClickSupport.OnItemClic
         // Start a DetailArticleActivity
         Intent intent = new Intent(mActivity, DetailArticleActivity.class);
         intent.putExtra(DetailArticleActivity.TAG_ARTICLE_ID, item.getArticleId());
-        intent.putExtra(DetailArticleActivity.TAG_ARTICLE_TITLE, item.getTitle());
+        intent.putExtra(DetailArticleActivity.TAG_ARTICLE_TYPE, item.getArticleType());
         intent.putExtra(DetailArticleActivity.TAG_ARTICLE_THUMBNAIL_URL, item.getThumbnailUrl());
-        intent.putExtra(DetailArticleActivity.TAG_ARTICLE_LEAD, item.getLead());
 
         // Indicates shared elements
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 mActivity,
                 new Pair<>(v.findViewById(R.id.brief_article_thumbnail),
-                        mActivity.getString(R.string.transition_name_article_thumbnail)),
-                new Pair<>(v.findViewById(R.id.brief_article_title),
-                        mActivity.getString(R.string.transition_name_article_title))
+                        mActivity.getString(R.string.transition_name_article_thumbnail))
         );
 
         // Start DetailArticleActivity with transition animation

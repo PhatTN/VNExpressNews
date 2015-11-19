@@ -7,27 +7,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BriefArticle {
 
     @JsonProperty(value = "article_id", required = true)
-    private int articleId;
-    @JsonProperty(value = "article_type")
-    private int articleType;
+    protected int articleId;
+    @JsonProperty(value = "article_type", required = true)
+    protected int articleType;
     @JsonProperty(value = "original_cate")
-    private int originalCategory;
+    protected int originalCategory;
     @JsonProperty(value = "title", required = true)
-    private String title;
+    protected String title;
     @JsonProperty(value = "lead", required = true)
-    private String lead;
+    protected String lead;
     @JsonProperty(value = "share_url")
-    private String shareUrl;
+    protected String shareUrl;
     @JsonProperty(value = "thumbnail_url", required = true)
-    private String thumbnailUrl;
+    protected String thumbnailUrl;
     @JsonProperty(value = "privacy")
-    private int privacy;
+    protected int privacy;
     @JsonProperty(value = "total_page")
-    private int totalPage;
+    protected int totalPage;
     @JsonProperty(value = "total_comment", required = true)
-    private int totalComment;
+    protected int totalComment;
     @JsonProperty(value = "publish_time", required = true)
-    private long publishTime;
+    protected long publishTime;
+
+    public static final int ARTICLE_TYPE_TEXT = 1;
+    public static final int ARTICLE_TYPE_VIDEO = 2;
+    public static final int ARTICLE_TYPE_PHOTO = 3;
+    public static final int ARTICLE_TYPE_INFOGRAPHIC = 4;
+    public static final int ARTICLE_TYPE_LIVE = 5;
+    public static final int ARTICLE_TYPE_VIDEOS = 6;
 
     public BriefArticle() {
     }

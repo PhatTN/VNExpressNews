@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
-    android:layout_margin="@dimen/cardView_margin"
+    android:layout_margin="@dimen/cardview_margin"
     tools:context=".BrowseNewsActivity">
 
     <LinearLayout
@@ -27,8 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/brief_article_title_padding"
-            android:textAppearance="@style/TextAppearance.BriefArticle.Title"
-            android:transitionName="@string/transition_name_article_title"/>
+            android:textAppearance="@style/TextAppearance.BriefArticle.Title" />
 
     </LinearLayout>
 

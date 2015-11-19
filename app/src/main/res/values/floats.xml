@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="paragraph_line_spacing_multiplier" type="integer" format="float">1.3</item>
+</resources>

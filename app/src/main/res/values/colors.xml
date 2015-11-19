@@ -56,7 +56,11 @@
     <color name="toolbar_text_color_secondary">#deffffff</color>
     <color name="article_title_text">#FF000000</color>
     <color name="main_article_title_text">#FFFFFFFF</color>
-    <color name="main_article_title_background">#DB2913</color>
+    <color name="main_article_title_background">#EE3322</color>
+    <color name="paragraph_text_color">#181818</color>
+    <color name="annotation_text_background_color">#EADBC4</color>
+    <color name="sub_header_text_color">#FD7910</color>
+    <color name="article_lead_text_color">#6D6C6C</color>
 
     <!-- Activities colors -->
     <color name="white_background">#ffffffff</color>

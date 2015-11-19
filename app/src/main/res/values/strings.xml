@@ -35,10 +35,13 @@
 
     <!-- Messages display to user -->
     <string name="no_network_connection">Unable to reach the VNExpress servers. Please check your connection and try again.</string>
+    <string name="load_data_failed">Something was wrong when trying to request data from Server. Please try again!</string>
 
     <!-- Content description for Image View -->
     <string name="content_description_home_logo">VN Express News</string>
     <string name="content_description_article_thumbnail">Article Thumbnail</string>
+    <string name="content_description_article_photo">Article Photo</string>
+    <string name="content_description_infographic_photo">Info Graphic Photo</string>
 
     <!-- Transition names - shared elements -->
     <string name="transition_name_article_thumbnail">transition:ARTICLE_THUMBNAIL</string>
@@ -47,4 +50,8 @@
     <!-- Activity label -->
     <string name="title_activity_welcome">Welcome</string>
     <string name="title_activity_detail_article">Detail Article</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_comment">CommentActivity</string>
 </resources>

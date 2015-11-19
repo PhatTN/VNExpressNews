@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.phat.vnexpressnews.Config;
 import com.example.phat.vnexpressnews.R;
@@ -129,7 +130,7 @@ public class BrowseNewsActivity extends BaseActivity
     @Override
     public void onMainArticleChanged(BriefArticle briefArticle) {
         // Bind new top brief article to views
-        TextView title = (TextView) findViewById(R.id.biref_article_title);
+        TextView title = (TextView) findViewById(R.id.brief_article_title);
         title.setText(briefArticle.getTitle());
         ImageView thumbnail = (ImageView) findViewById(R.id.brief_article_thumbnail);
         mImageLoader.loadImage(briefArticle.getThumbnailUrl(), thumbnail, false);
@@ -149,6 +150,9 @@ public class BrowseNewsActivity extends BaseActivity
     public void onRequestDataFailed() {
         // Stop progress bar
         mProgressBar.hide();
+
+        // Notify to user
+        Toast.makeText(BrowseNewsActivity.this, R.string.load_data_failed, Toast.LENGTH_LONG).show();
     }
 
     private void expandAppBarLayout() {

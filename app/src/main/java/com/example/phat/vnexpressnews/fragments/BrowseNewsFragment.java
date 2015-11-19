@@ -37,7 +37,9 @@ import static com.example.phat.vnexpressnews.util.LogUtils.LOGW;
 import static com.example.phat.vnexpressnews.util.LogUtils.makeLogTag;
 
 /**
- * A simple {@link Fragment} subclass.
+ * This fragment makes a network request to get {@link List<BriefArticle>}, then will displays
+ * them using {@link RecyclerView}
+ *
  * Activities that contain this fragment must implement the
  * {@link BrowseNewsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
@@ -129,14 +131,12 @@ public class BrowseNewsFragment extends Fragment
 
         // Detects when the recycler view hits top
         mBriefArticleRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            int totalDy = 0;
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                totalDy += dy;
-                if (totalDy == 0) {
+                if (!recyclerView.canScrollVertically(-1)) {
                     // When RecyclerView hit top, notify to parent activity
-                    BrowseNewsFragment.this.mListener.onRecyclerViewHitTop();
+                    mListener.onRecyclerViewHitTop();
                 }
             }
         });
@@ -197,11 +197,11 @@ public class BrowseNewsFragment extends Fragment
     @Override
     public void onErrorResponse(VolleyError volleyError) {
         if (volleyError.networkResponse != null) {
-            LOGD(TAG, "Can not load category list from server. " +
+            LOGD(TAG, "Can not load brief articles from server. " +
                     "Status code: " + volleyError.networkResponse.statusCode +
                     ". NetworkTimeMs: " + volleyError.getNetworkTimeMs());
         } else {
-            LOGD(TAG, "Can not load category list from server. Network response is null.");
+            LOGD(TAG, "Can not load brief articles from server. Network response is null.");
         }
 
         if (!NetworkUtils.hasNetworkConnection(getActivity())) {

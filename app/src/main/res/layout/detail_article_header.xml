@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white_background">
+
+    <!-- Category name, publish date -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/module_margin_top">
+
+        <TextView
+            android:id="@+id/category_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+            android:textSize="@dimen/app_text_size_medium"
+            android:textAllCaps="true"
+            android:textColor="@color/sub_header_text_color"
+            android:textStyle="bold"
+            android:fontFamily="@string/font_fontFamily_condensed"
+            android:textAppearance="@style/TextAppearance.Default"/>
+
+        <TextView
+            android:id="@+id/publish_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:textSize="@dimen/app_text_size_medium"
+            android:textColor="@color/sub_header_text_color"
+            android:fontFamily="@string/font_fontFamily_condensed"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Default"/>
+
+    </FrameLayout>
+
+    <View
+        style="@style/LineSeparator" />
+
+    <!-- Title, lead -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/module_margin_top"
+        android:layout_marginBottom="@dimen/module_margin_bottom"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/article_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Article.Title"/>
+
+        <TextView
+            android:id="@+id/article_lead"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Article.Lead"/>
+
+    </LinearLayout>
+
+</LinearLayout>

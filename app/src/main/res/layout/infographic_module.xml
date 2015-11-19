@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/module_margin_top"
+    android:layout_marginBottom="@dimen/module_margin_bottom">
+
+    <ImageView
+        android:id="@+id/infographic_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:background="@color/imageView_background"
+        android:contentDescription="@string/content_description_infographic_photo"/>
+
+    <TextView
+        android:id="@+id/infographic_caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/photo_caption_padding"
+        android:background="@color/annotation_text_background_color"
+        android:textAppearance="@style/TextAppearance.Paragraph.AnnotationText"/>
+
+</LinearLayout>

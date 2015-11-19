@@ -33,25 +33,13 @@
                 app:layout_collapseMode="parallax"
                 android:contentDescription="@string/content_description_article_thumbnail"/>
 
-            <TextView
-                android:id="@+id/article_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|start"
-                android:layout_marginBottom="@dimen/brief_article_title_main_margin"
-                android:layout_marginStart="@dimen/brief_article_title_main_margin"
-                android:layout_marginLeft="@dimen/brief_article_title_main_margin"
-                android:layout_marginRight="@dimen/brief_article_title_main_margin"
-                android:layout_marginEnd="@dimen/brief_article_title_main_margin"
-                android:padding="@dimen/cardView_margin"
-                android:background="@color/main_article_title_background"
-                android:textAppearance="@style/TextAppearance.BriefArticle.Title.Main"
-                android:transitionName="@string/transition_name_article_title" />
-
             <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/Toolbar.PopupOverlay" />
+                android:background="@drawable/toolbar_transparent_background"
+                android:theme="@style/Toolbar.AppBarOverlay"
+                app:popupTheme="@style/Toolbar.PopupOverlay"
+                app:layout_collapseMode="pin"/>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -59,9 +47,11 @@
 
     <include layout="@layout/content_detail_article" />
 
+    <include layout="@layout/progressbar_indeterminate" />
+
     <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+        android:src="@drawable/ic_message_text" />
 
 </android.support.design.widget.CoordinatorLayout>

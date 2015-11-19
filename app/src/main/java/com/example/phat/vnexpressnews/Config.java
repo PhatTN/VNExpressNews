@@ -60,4 +60,6 @@ public class Config {
 
     /** Number of brief articles columns will be displayed in {@link BrowseNewsFragment} */
     public static final int DEFAULT_SPAN_COUNT = 2;
+
+    public static final String DATE_TIME_FORMAT_TEMPLATE = "HH:mm - dd/MM/yyyy";
 }

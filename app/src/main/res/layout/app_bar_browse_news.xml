@@ -33,7 +33,7 @@
                 android:contentDescription="@string/content_description_article_thumbnail"/>
 
             <TextView
-                android:id="@+id/biref_article_title"
+                android:id="@+id/brief_article_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|start"
@@ -42,10 +42,11 @@
                 android:layout_marginLeft="@dimen/brief_article_title_main_margin"
                 android:layout_marginRight="@dimen/brief_article_title_main_margin"
                 android:layout_marginEnd="@dimen/brief_article_title_main_margin"
-                android:padding="@dimen/cardView_margin"
+                android:padding="@dimen/cardview_margin"
                 android:background="@color/main_article_title_background"
-                android:textAppearance="@style/TextAppearance.BriefArticle.Title.Main"
-                android:transitionName="@string/transition_name_article_title"/>
+                android:maxLines="@integer/article_title_main_maxLines"
+                android:ellipsize="end"
+                android:textAppearance="@style/TextAppearance.BriefArticle.Title.Main" />
 
             <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
                 android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
@@ -60,11 +61,6 @@
 
     <include layout="@layout/content_browse_news" />
 
-    <android.support.v4.widget.ContentLoadingProgressBar
-        android:id="@+id/progress_bar"
-        style="@style/ProgressBar.Indeterminate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true" />
+    <include layout="@layout/progressbar_indeterminate" />
+
 </android.support.design.widget.CoordinatorLayout>

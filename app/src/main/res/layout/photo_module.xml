@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/module_margin_top"
+    android:layout_marginBottom="@dimen/module_margin_bottom">
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:background="@color/imageView_background"
+        android:contentDescription="@string/content_description_article_photo"/>
+
+    <TextView
+        android:id="@+id/photo_caption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/photo_caption_padding"
+        android:background="@color/annotation_text_background_color"
+        android:lineSpacingMultiplier="@integer/paragraph_line_spacing_multiplier"
+        android:textAppearance="@style/TextAppearance.Paragraph.AnnotationText"/>
+
+</LinearLayout>
