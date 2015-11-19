@@ -8,12 +8,14 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phat.vnexpressnews.Config;
 import com.example.phat.vnexpressnews.R;
+import com.example.phat.vnexpressnews.activities.eventhandler.OnBriefArticleClickedHandler;
 import com.example.phat.vnexpressnews.fragments.BrowseNewsFragment;
 import com.example.phat.vnexpressnews.fragments.BrowseNewsFragment.OnFragmentInteractionListener;
 import com.example.phat.vnexpressnews.model.BriefArticle;
@@ -128,12 +130,23 @@ public class BrowseNewsActivity extends BaseActivity
     }
 
     @Override
-    public void onMainArticleChanged(BriefArticle briefArticle) {
+    public void onMainArticleChanged(final BriefArticle briefArticle) {
+        View v = findViewById(R.id.main_brief_article_wrapper);
+
         // Bind new top brief article to views
-        TextView title = (TextView) findViewById(R.id.brief_article_title);
+        TextView title = (TextView) v.findViewById(R.id.brief_article_title);
         title.setText(briefArticle.getTitle());
-        ImageView thumbnail = (ImageView) findViewById(R.id.brief_article_thumbnail);
+        ImageView thumbnail = (ImageView) v.findViewById(R.id.brief_article_thumbnail);
         mImageLoader.loadImage(briefArticle.getThumbnailUrl(), thumbnail, false);
+
+        // Set click event to view
+        final OnMainArticleClickListener listener = new OnBriefArticleClickedHandler(this);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onMainArticleClicked(v, briefArticle);
+            }
+        });
 
         expandAppBarLayout();
 
@@ -189,5 +202,9 @@ public class BrowseNewsActivity extends BaseActivity
 
         mAPIEndpointBuilder.setAPIEndpointType(APIEndpointType.API_NEWS_WITH_CATEGORY)
                 .setCategoryId(mCurrentCategoryId);
+    }
+
+    public interface OnMainArticleClickListener {
+        void onMainArticleClicked(View v, BriefArticle briefArticle);
     }
 }

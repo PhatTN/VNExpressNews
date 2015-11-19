@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.phat.vnexpressnews.R;
+import com.example.phat.vnexpressnews.activities.BrowseNewsActivity;
 import com.example.phat.vnexpressnews.activities.DetailArticleActivity;
 import com.example.phat.vnexpressnews.adapters.BriefArticleAdapter;
 import com.example.phat.vnexpressnews.model.BriefArticle;
@@ -20,7 +21,8 @@ import static com.example.phat.vnexpressnews.util.LogUtils.makeLogTag;
 /**
  * Handles when a brief article in recycler view is clicked.
  */
-public class OnBriefArticleClickedHandler implements ItemClickSupport.OnItemClickListener {
+public class OnBriefArticleClickedHandler implements ItemClickSupport.OnItemClickListener,
+        BrowseNewsActivity.OnMainArticleClickListener {
     private static final String TAG = makeLogTag(OnBriefArticleClickedHandler.class);
 
     private Activity mActivity;
@@ -35,10 +37,19 @@ public class OnBriefArticleClickedHandler implements ItemClickSupport.OnItemClic
         BriefArticle item = ((BriefArticleAdapter) recyclerView.getAdapter()).getItem(position);
 
         // Start a DetailArticleActivity
+        startDetailArticleActivity(v, item);
+    }
+
+    @Override
+    public void onMainArticleClicked(View v, BriefArticle briefArticle) {
+        startDetailArticleActivity(v, briefArticle);
+    }
+
+    private void startDetailArticleActivity(View v, BriefArticle briefArticle) {
         Intent intent = new Intent(mActivity, DetailArticleActivity.class);
-        intent.putExtra(DetailArticleActivity.TAG_ARTICLE_ID, item.getArticleId());
-        intent.putExtra(DetailArticleActivity.TAG_ARTICLE_TYPE, item.getArticleType());
-        intent.putExtra(DetailArticleActivity.TAG_ARTICLE_THUMBNAIL_URL, item.getThumbnailUrl());
+        intent.putExtra(DetailArticleActivity.TAG_ARTICLE_ID, briefArticle.getArticleId());
+        intent.putExtra(DetailArticleActivity.TAG_ARTICLE_TYPE, briefArticle.getArticleType());
+        intent.putExtra(DetailArticleActivity.TAG_ARTICLE_THUMBNAIL_URL, briefArticle.getThumbnailUrl());
 
         // Indicates shared elements
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -49,7 +60,7 @@ public class OnBriefArticleClickedHandler implements ItemClickSupport.OnItemClic
 
         // Start DetailArticleActivity with transition animation
         ActivityCompat.startActivity(mActivity, intent, options.toBundle());
-        LOGI(TAG, "Start DetailArticleActivity with articleTitle: " + item.getTitle()
-                + ", articleId:" + item.getArticleId());
+        LOGI(TAG, "Start DetailArticleActivity with articleTitle: " + briefArticle.getTitle()
+                + ", articleId:" + briefArticle.getArticleId());
     }
 }

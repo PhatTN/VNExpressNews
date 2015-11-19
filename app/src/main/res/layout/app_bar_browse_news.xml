@@ -21,32 +21,40 @@
             app:contentScrim="?attr/colorPrimary"
             android:fitsSystemWindows="true">
 
-            <ImageView
-                android:id="@+id/brief_article_thumbnail"
+            <FrameLayout
+                android:id="@+id/main_brief_article_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:fitsSystemWindows="true"
-                android:background="@color/imageView_background"
-                android:transitionName="@string/transition_name_article_thumbnail"
-                app:layout_collapseMode="parallax"
-                android:contentDescription="@string/content_description_article_thumbnail"/>
+                android:fitsSystemWindows="true">
 
-            <TextView
-                android:id="@+id/brief_article_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|start"
-                android:layout_marginBottom="@dimen/brief_article_title_main_margin"
-                android:layout_marginStart="@dimen/brief_article_title_main_margin"
-                android:layout_marginLeft="@dimen/brief_article_title_main_margin"
-                android:layout_marginRight="@dimen/brief_article_title_main_margin"
-                android:layout_marginEnd="@dimen/brief_article_title_main_margin"
-                android:padding="@dimen/cardview_margin"
-                android:background="@color/main_article_title_background"
-                android:maxLines="@integer/article_title_main_maxLines"
-                android:ellipsize="end"
-                android:textAppearance="@style/TextAppearance.BriefArticle.Title.Main" />
+                <ImageView
+                    android:id="@+id/brief_article_thumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:fitsSystemWindows="true"
+                    android:background="@color/imageView_background"
+                    android:transitionName="@string/transition_name_article_thumbnail"
+                    app:layout_collapseMode="parallax"
+                    android:contentDescription="@string/content_description_article_thumbnail"/>
+
+                <TextView
+                    android:id="@+id/brief_article_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start"
+                    android:layout_marginBottom="@dimen/brief_article_title_main_margin"
+                    android:layout_marginStart="@dimen/brief_article_title_main_margin"
+                    android:layout_marginLeft="@dimen/brief_article_title_main_margin"
+                    android:layout_marginRight="@dimen/brief_article_title_main_margin"
+                    android:layout_marginEnd="@dimen/brief_article_title_main_margin"
+                    android:padding="@dimen/cardview_margin"
+                    android:background="@color/main_article_title_background"
+                    android:maxLines="@integer/article_title_main_maxLines"
+                    android:ellipsize="end"
+                    android:textAppearance="@style/TextAppearance.BriefArticle.Title.Main" />
+
+            </FrameLayout>
 
             <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
                 android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
