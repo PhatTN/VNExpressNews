@@ -44,14 +44,14 @@
     <string name="content_description_infographic_photo">Info Graphic Photo</string>
 
     <!-- Transition names - shared elements -->
-    <string name="transition_name_article_thumbnail">transition:ARTICLE_THUMBNAIL</string>
-    <string name="transition_name_article_title">transition:ARTICLE_TITLE</string>
+    <string name="transition_name_article_thumbnail" translatable="false">transition:ARTICLE_THUMBNAIL</string>
+    <string name="transition_name_article_title" translatable="false">transition:ARTICLE_TITLE</string>
 
     <!-- Activity label -->
     <string name="title_activity_welcome">Welcome</string>
     <string name="title_activity_detail_article">Detail Article</string>
+    <string name="title_activity_comment">Comments</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_comment">CommentActivity</string>
+    <!-- Toolbar Title -->
+    <string name="toolbar_title_comments">Bình Luận</string>
 </resources>

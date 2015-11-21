@@ -3,6 +3,7 @@ package com.example.phat.vnexpressnews.activities;
 import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
@@ -22,7 +23,6 @@ import com.example.phat.vnexpressnews.util.NavDrawerUtils;
 
 import java.util.List;
 
-import static com.example.phat.vnexpressnews.util.LogUtils.LOGD;
 import static com.example.phat.vnexpressnews.util.LogUtils.LOGI;
 import static com.example.phat.vnexpressnews.util.LogUtils.makeLogTag;
 
@@ -170,6 +170,17 @@ public abstract class BaseActivity extends AppCompatActivity implements
         return mToolbar;
     }
 
+    protected void setToolbarTitle(String title) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(title);
+        }
+    }
+
+    protected void setToolbarTitle(@StringRes int id) {
+        setToolbarTitle(getString(id));
+    }
+
     private void buildMenuItem(Menu navMenu, Category c, int order) {
         // Adds menu item to navigation menu
         MenuItem temp = navMenu.add(MENU_GROUP_ID_CATEGORY, c.getCategoryID(),
@@ -229,15 +240,17 @@ public abstract class BaseActivity extends AppCompatActivity implements
     }
 
     /**
-     * Sub class will implements this method to handler when user clicks a category item on navigation
+     * Sub class will override this method to handler when user clicks a category item on navigation
      * in its own way. We also can create a common way to handle this event, but that act will makes this method
      * become complex and mess.
      * Has many cases, contexts and situations when this event happens. So let sub class implement this method
      * and do in its own way
      *
+     * The activities that doesn't support NadDrawer doesn't need to override this method
+     *
      * @param categoryId The category id which user was selected.
      */
-    protected abstract void onCategoryItemSelected(int categoryId);
+    protected void onCategoryItemSelected(int categoryId){}
 
     protected Category getCategory(int categoryId) {
         if (mCategoryList == null || mCategoryList.isEmpty()) {

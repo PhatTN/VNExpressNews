@@ -11,7 +11,7 @@
     android:orientation="vertical"
     app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
     tools:showIn="@layout/activity_detail_article"
-    tools:context=".DetailArticleActivity">
+    tools:context=".activities.DetailArticleActivity">
 
     <FrameLayout
         android:id="@+id/detail_article_fragment_placeholder"

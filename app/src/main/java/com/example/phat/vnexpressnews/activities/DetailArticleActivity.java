@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.phat.vnexpressnews.Config;
 import com.example.phat.vnexpressnews.R;
 import com.example.phat.vnexpressnews.fragments.DetailArticleFragment;
+import com.example.phat.vnexpressnews.model.Article;
 
 public class DetailArticleActivity extends BaseActivity
         implements DetailArticleFragment.OnFragmentInteractionListener {
@@ -74,17 +75,6 @@ public class DetailArticleActivity extends BaseActivity
         collapsingToolbarLayout.setTitleEnabled(false);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.appbar_layout);
         mProgressBar = (ContentLoadingProgressBar) findViewById(R.id.progress_bar);
-
-        // Sets up FloatActionButton and its Click Event
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start CommentActivity
-                Intent intent = new Intent(DetailArticleActivity.this, CommentActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     @Override
@@ -99,10 +89,6 @@ public class DetailArticleActivity extends BaseActivity
         outState.putInt(TAG_ARTICLE_TYPE, mArticleType);
         outState.putString(TAG_ARTICLE_THUMBNAIL_URL, mArticleThumbnailUrl);
     }
-
-    /** Because this activity doesn't support Navigation Drawer, so we do not implement this method */
-    @Override
-    protected void onCategoryItemSelected(int categoryId) {}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -144,9 +130,25 @@ public class DetailArticleActivity extends BaseActivity
     }
 
     @Override
-    public void onRequestDataSuccessfully() {
+    public void onRequestDataSuccessfully(final Article result) {
         // Hide progress bar
         hideProgressBar();
+
+        // When request data successfully. We start sets up FloatActionButton and its click event
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start CommentActivity
+                Intent intent = new Intent(DetailArticleActivity.this, CommentActivity.class);
+                intent.putExtra(CommentActivity.TAG_ARTICLE_ID, result.getArticleId());
+                intent.putExtra(CommentActivity.TAG_CATEGORY_ID, result.getCategoryParent().getCategoryID());
+                intent.putExtra(CommentActivity.TAG_ARTICLE_TITLE, result.getTitle());
+                startActivity(intent);
+            }
+        });
+        // Since it is set to "INVISIBLE" in XML file. So we show it up
+        fab.show();
     }
 
     private void hideProgressBar() {

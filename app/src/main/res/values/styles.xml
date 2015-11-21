@@ -43,7 +43,9 @@
         <item name="android:windowBackground">@color/white_background</item>
     </style>
 
-    <style name="Theme.VNExpress.Comment" parent="Theme.VNExpress" />
+    <style name="Theme.VNExpress.Comment" parent="Theme.VNExpress">
+        <item name="android:windowBackground">@color/white_background</item>
+    </style>
 
     <!-- Body content -->
     <style name="Widget.VNExpress.EditText" parent="Widget.AppCompat.EditText">

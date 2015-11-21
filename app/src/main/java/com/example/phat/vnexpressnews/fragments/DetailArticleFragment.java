@@ -214,8 +214,8 @@ public class DetailArticleFragment extends Fragment
         }
         LOGI(TAG, "Requests the article " + article.getTitle() + " successfully");
 
-        // Notify to the parent activity
-        mListener.onRequestDataSuccessfully();
+        // Notify and pass the result to the parent activity
+        mListener.onRequestDataSuccessfully(article);
     }
 
     /** Make a request to load an article by articleId */
@@ -269,7 +269,7 @@ public class DetailArticleFragment extends Fragment
      */
     public interface OnFragmentInteractionListener {
         void onRequestDataFailed();
-        void onRequestDataSuccessfully();
+        void onRequestDataSuccessfully(Article result);
         void onRecyclerViewHitTop();
     }
 
