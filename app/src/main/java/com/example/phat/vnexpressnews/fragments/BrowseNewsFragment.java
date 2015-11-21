@@ -132,9 +132,17 @@ public class BrowseNewsFragment extends Fragment
         // Detects when the recycler view hits top
         mBriefArticleRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
+            int mCurrentState;
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                mCurrentState = newState;
+            }
+
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (!recyclerView.canScrollVertically(-1)) {
+                if (!recyclerView.canScrollVertically(-1) &&
+                        mCurrentState != RecyclerView.SCROLL_STATE_DRAGGING) {
                     // When RecyclerView hit top, notify to parent activity
                     mListener.onRecyclerViewHitTop();
                 }
