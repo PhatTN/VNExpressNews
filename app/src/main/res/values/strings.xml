@@ -51,7 +51,12 @@
     <string name="title_activity_welcome">Welcome</string>
     <string name="title_activity_detail_article">Detail Article</string>
     <string name="title_activity_comment">Comments</string>
+    <string name="title_activity_search_result">Search Result</string>
 
     <!-- Toolbar Title -->
     <string name="toolbar_title_comments">Bình Luận</string>
+
+    <!-- SearchView -->
+    <string name="searchview_hint">Tìm Kiếm Tin Tức</string>
+
 </resources>

@@ -1,5 +1,6 @@
 package com.example.phat.vnexpressnews.io;
 
+import com.example.phat.vnexpressnews.Config;
 import com.example.phat.vnexpressnews.exceptions.InternalServerErrorException;
 import com.example.phat.vnexpressnews.exceptions.JacksonProcessingException;
 import com.example.phat.vnexpressnews.model.BriefArticle;
@@ -29,7 +30,7 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
     private HandlerType mHandlerType;
 
     public enum HandlerType{
-        TOP_NEWS, NEWS_WITH_CATEGORY
+        TOP_NEWS, NEWS_WITH_CATEGORY, SEARCHING_NEWS
     }
 
     public BriefArticlesHandler(HandlerType handlerType) {
@@ -66,12 +67,18 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
         BriefArticlesDeserializer mDeserializer;
         JsonNode dataNode = rootNode.path(DATA); // unwrap data node
 
-        if (mHandlerType == HandlerType.TOP_NEWS) {
-            mDeserializer = new TopNewsDeserializer();
-        } else if (mHandlerType == HandlerType.NEWS_WITH_CATEGORY) {
-            mDeserializer = new NewsWithCategoryDeserializer();
-        } else {
-            throw new IllegalStateException("Must set handler type before processing Json Data");
+        switch (mHandlerType) {
+            case TOP_NEWS:
+                mDeserializer = new TopNewsDeserializer();
+                break;
+            case NEWS_WITH_CATEGORY:
+                mDeserializer = new NewsWithCategoryDeserializer();
+                break;
+            case SEARCHING_NEWS:
+                mDeserializer = new SearchingNewsDeserializer();
+                break;
+            default:
+                throw new IllegalStateException("Must set handler type before processing JSON Data");
         }
 
         articleSet.addAll(mDeserializer.deserialize(dataNode));
@@ -115,7 +122,7 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
 
         @Override
         public Set<BriefArticle> deserialize(JsonNode node) throws JacksonProcessingException {
-            Set<BriefArticle> set = new LinkedHashSet<>();
+            Set<BriefArticle> set = new LinkedHashSet<>(Config.DEFAULT_NUMBER_OF_ARTICLE_WITH_CATEGORY);
 
             Iterator<JsonNode> data = node.elements();
             while (data.hasNext()) {
@@ -126,6 +133,23 @@ public class BriefArticlesHandler extends JSONHandler<Set<BriefArticle>> {
                     LOGD(TAG, "Maybe JSON format has been changed. Check SRS and update this code fit JSON format");
                 }
             }
+            return set;
+        }
+    }
+
+    private class SearchingNewsDeserializer implements BriefArticlesDeserializer {
+
+        @Override
+        public Set<BriefArticle> deserialize(JsonNode node) throws JacksonProcessingException {
+            Set<BriefArticle> set = new LinkedHashSet<>(Config.DEFAULT_NUMBER_OF_ARTICLE_WITH_CATEGORY);
+
+            JsonParser parser = node.traverse();
+            if (JacksonUtils.isStartArrayToken(parser)) {
+                set.addAll(JacksonUtils.parse(parser, List.class, BriefArticle.class));
+            } else {
+                LOGD(TAG, "Maybe JSON format has been changed. Check SRS and update this code fit JSON format");
+            }
+
             return set;
         }
     }
