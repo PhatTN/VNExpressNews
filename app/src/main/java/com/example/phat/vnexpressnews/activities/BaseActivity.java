@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.phat.vnexpressnews.Config;
 import com.example.phat.vnexpressnews.R;
@@ -216,14 +217,17 @@ public abstract class BaseActivity extends AppCompatActivity implements
                 break;
             case Config.DEFAULT_CATEGORY_SETTINGS_ID:
                 LOGI(TAG, "Settings menu was selected.");
+                Toast.makeText(BaseActivity.this, R.string.will_be_updated_function, Toast.LENGTH_SHORT).show();
                 // TODO start settings screen
                 break;
             case Config.DEFAULT_CATEGORY_LOGIN_ID:
                 LOGI(TAG, "Login menu was selected.");
+                Toast.makeText(BaseActivity.this, R.string.will_be_updated_function, Toast.LENGTH_SHORT).show();
                 // TODO log account out
                 break;
             case Config.DEFAULT_CATEGORY_LOGOUT_ID:
                 LOGI(TAG, "Logout menu was selected.");
+                Toast.makeText(BaseActivity.this, R.string.will_be_updated_function, Toast.LENGTH_SHORT).show();
                 // TODO display login screen
                 break;
         }

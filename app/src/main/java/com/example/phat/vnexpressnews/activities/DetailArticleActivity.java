@@ -50,6 +50,8 @@ public class DetailArticleActivity extends BaseActivity
         // This activity doesn't support NavDrawer
         shouldSupportNavDrawer(false);
 
+        setToolbarTitle(R.string.toolbar_title_news);
+
         if (savedInstanceState == null) {
             // If this is first time the activity launch, get data from Intent
             Intent intent = getIntent();
@@ -133,6 +135,10 @@ public class DetailArticleActivity extends BaseActivity
     public void onRequestDataSuccessfully(final Article result) {
         // Hide progress bar
         hideProgressBar();
+
+        if (result.getCategoryParent() != null) {
+            setToolbarTitle(result.getCategoryParent().getCategoryName());
+        }
 
         // When request data successfully. We start sets up FloatActionButton and its click event
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

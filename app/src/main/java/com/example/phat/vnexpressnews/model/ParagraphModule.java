@@ -1,7 +1,6 @@
 package com.example.phat.vnexpressnews.model;
 
-import android.text.Html;
-import android.text.Spanned;
+import android.os.Parcel;
 
 import org.jsoup.nodes.Element;
 
@@ -10,27 +9,55 @@ import org.jsoup.nodes.Element;
  */
 public class ParagraphModule extends Module {
 
-    private Spanned paragraph;
+    private String paragraph;
 
     public ParagraphModule() {
         super(PARAGRAPH_TYPE);
     }
 
-    public ParagraphModule(Spanned paragraph) {
+    public ParagraphModule(String paragraph) {
         this();
         this.paragraph = paragraph;
     }
 
     public ParagraphModule(Element element) {
         this();
-        this.paragraph = Html.fromHtml(element.html());
+        this.paragraph = element.html();
     }
 
-    public Spanned getParagraph() {
+    public ParagraphModule(Parcel in) {
+        super(in);
+        paragraph = in.readString();
+    }
+
+    public static final Creator<ParagraphModule> CREATOR = new Creator<ParagraphModule>() {
+        @Override
+        public ParagraphModule createFromParcel(Parcel source) {
+            return new ParagraphModule(source);
+        }
+
+        @Override
+        public ParagraphModule[] newArray(int size) {
+            return new ParagraphModule[size];
+        }
+    };
+
+    public String getParagraph() {
         return paragraph;
     }
 
-    public void setParagraph(Spanned paragraph) {
+    public void setParagraph(String paragraph) {
         this.paragraph = paragraph;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+        dest.writeString(paragraph);
     }
 }

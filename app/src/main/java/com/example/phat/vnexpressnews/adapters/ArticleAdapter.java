@@ -2,6 +2,8 @@ package com.example.phat.vnexpressnews.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +91,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
         if (viewType == ARTICLE_HEADER_TYPE) {
             // Sets data to views
-            holder.categoryName.setText(mArticle.getCategoryParent().getCategoryName());
+            holder.categoryName.setText(mArticle.getCategoryParent() != null ?
+                    mArticle.getCategoryParent().getCategoryName() : "");
             holder.publishTime.setText(DateTimeUtils.format(mArticle.getPublishTime()));
             holder.articleTitle.setText(mArticle.getTitle());
             holder.articleLead.setText(mArticle.getLead());
@@ -104,10 +107,14 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         Module module = mModuleList.get(position - 1);
         switch (viewType) {
             case PARAGRAPH_TYPE:
-                holder.paragraph.setText(((ParagraphModule) module).getParagraph());
+                Spanned paragraph = TextUtils.trimTrailingWhiteSpace(
+                        Html.fromHtml(((ParagraphModule) module).getParagraph()));
+                holder.paragraph.setText(paragraph);
                 break;
             case EXTRACT_PARAGRAPH_TYPE:
-                holder.extractParagraph.setText(((ExtractParagraphModule) module).getParagraph());
+                Spanned extractParagraph = TextUtils.trimTrailingWhiteSpace(
+                        Html.fromHtml(((ExtractParagraphModule) module).getParagraph()));
+                holder.extractParagraph.setText(extractParagraph);
                 break;
             case PHOTO_TYPE:
                 PhotoModule photoModule = (PhotoModule) module;
@@ -115,7 +122,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 if (TextUtils.isEmpty(photoModule.getPhotoCaption())) {
                     holder.photoCaption.setVisibility(View.GONE);
                 } else {
-                    holder.photoCaption.setText(photoModule.getPhotoCaption());
+                    Spanned photoCaption = TextUtils.trimTrailingWhiteSpace(
+                            Html.fromHtml(photoModule.getPhotoCaption()));
+                    holder.photoCaption.setText(photoCaption);
                 }
                 break;
             case INFOGRAPHIC_TYPE:
@@ -124,7 +133,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
                 if (TextUtils.isEmpty(infographicModule.getPhotoCaption())) {
                     holder.infographicCaption.setVisibility(View.GONE);
                 } else {
-                    holder.infographicCaption.setText(infographicModule.getPhotoCaption());
+                    Spanned infographicCaption = TextUtils.trimTrailingWhiteSpace(
+                            Html.fromHtml(infographicModule.getPhotoCaption()));
+                    holder.infographicCaption.setText(infographicCaption);
                 }
                 break;
         }

@@ -11,6 +11,7 @@ import android.view.View;
 import com.example.phat.vnexpressnews.R;
 import com.example.phat.vnexpressnews.activities.BrowseNewsActivity;
 import com.example.phat.vnexpressnews.activities.DetailArticleActivity;
+import com.example.phat.vnexpressnews.activities.VideoPlayerActivity;
 import com.example.phat.vnexpressnews.adapters.BriefArticleAdapter;
 import com.example.phat.vnexpressnews.model.BriefArticle;
 import com.example.phat.vnexpressnews.util.ItemClickSupport;
@@ -36,8 +37,12 @@ public class OnBriefArticleClickedHandler implements ItemClickSupport.OnItemClic
         // Gets item which was clicked
         BriefArticle item = ((BriefArticleAdapter) recyclerView.getAdapter()).getItem(position);
 
-        // Start a DetailArticleActivity
-        startDetailArticleActivity(v, item);
+        // Start activity depending on articleType
+        if (item.getArticleType() == BriefArticle.ARTICLE_TYPE_VIDEO) {
+            startVideoPlayerActivity(v, item.getArticleId());
+        } else {
+            startDetailArticleActivity(v, item);
+        }
     }
 
     @Override
@@ -62,5 +67,11 @@ public class OnBriefArticleClickedHandler implements ItemClickSupport.OnItemClic
         ActivityCompat.startActivity(mActivity, intent, options.toBundle());
         LOGI(TAG, "Start DetailArticleActivity with articleTitle: " + briefArticle.getTitle()
                 + ", articleId:" + briefArticle.getArticleId());
+    }
+
+    private void startVideoPlayerActivity(View v, int articleId) {
+        Intent intent = new Intent(mActivity, VideoPlayerActivity.class);
+        intent.putExtra(VideoPlayerActivity.TAG_ARTICLE_ID, articleId);
+        mActivity.startActivity(intent);
     }
 }

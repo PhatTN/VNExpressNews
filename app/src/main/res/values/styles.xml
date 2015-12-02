@@ -28,7 +28,6 @@
         <item name="android:textColorPrimary">@color/toolbar_text_color_primary</item>
         <item name="android:textColorSecondary">@color/toolbar_text_color_secondary</item>
     </style>
-
     <style name="Toolbar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!-- Activities -->
@@ -52,6 +51,11 @@
     <style name="Theme.VNExpress.SearchResult" parent="Theme.VNExpress">
         <item name="android:windowBackground">@color/white_background</item>
         <item name="searchViewStyle">@style/SearchView</item>
+    </style>
+
+    <style name="Theme.VNExpress.VideoPlayer" parent="Theme.VNExpress">
+        <item name="android:windowBackground">@color/white_background</item>
+        <item name="android:windowActionBarOverlay">false</item>
     </style>
 
     <!-- Body content -->
@@ -84,19 +88,17 @@
 
     <style name="TextAppearance.Article.Title" parent="TextAppearance.Default">
         <item name="android:textSize">@dimen/app_text_size_xxlarge</item>
-        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_condensed
-        </item>
+        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_condensed</item>
         <item name="android:textColor">@color/article_title_text</item>
     </style>
 
     <style name="TextAppearance.Article.Lead" parent="TextAppearance.Default">
         <item name="android:textStyle">italic</item>
-        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_condensed
-        </item>
+        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_condensed</item>
         <item name="android:textColor">@color/article_lead_text_color</item>
     </style>
 
-    <!-- Widgets -->
+    <!-- Progress bar -->
     <style name="ProgressBar.Indeterminate" parent="Widget.AppCompat.ProgressBar" />
 
     <style name="SearchView" parent="Widget.AppCompat.SearchView" />
@@ -105,8 +107,7 @@
     <style name="TextAppearance.Paragraph" parent="TextAppearance.Default">
         <item name="android:textSize">@dimen/app_text_size_large</item>
         <item name="android:textColor">@color/paragraph_text_color</item>
-        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_condensed
-        </item>
+        <item name="android:fontFamily" tools:targetApi="16">@string/font_fontFamily_condensed</item>
     </style>
 
     <style name="TextAppearance.Paragraph.Extract" />
@@ -120,5 +121,7 @@
         <item name="android:layout_marginTop">@dimen/line_separator_horizontal_margin</item>
         <item name="android:layout_marginBottom">@dimen/line_separator_horizontal_margin</item>
     </style>
+    <style name="Theme.VNExpress.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.VNExpress.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

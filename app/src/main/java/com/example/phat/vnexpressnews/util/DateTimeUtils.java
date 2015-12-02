@@ -20,4 +20,9 @@ public class DateTimeUtils {
         return sdf.format(new Date(milliseconds));
     }
 
+    public static String toMinutes(long milliseconds) {
+        long seconds = Math.round(milliseconds / 1000);
+        return String.format("%02d:%02d", seconds / 60, seconds % 60);
+    }
+
 }

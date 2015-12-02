@@ -1,7 +1,6 @@
 package com.example.phat.vnexpressnews.model;
 
-import android.text.Html;
-import android.text.Spanned;
+import android.os.Parcel;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -14,13 +13,13 @@ import org.jsoup.select.Elements;
  */
 public class ExtractParagraphModule extends Module {
 
-    private Spanned paragraph;
+    private String paragraph;
 
     public ExtractParagraphModule() {
         super(EXTRACT_PARAGRAPH_TYPE);
     }
 
-    public ExtractParagraphModule(Spanned paragraph) {
+    public ExtractParagraphModule(String paragraph) {
         this();
         this.paragraph = paragraph;
     }
@@ -36,14 +35,42 @@ public class ExtractParagraphModule extends Module {
                 builder.append("\n\n");
             }
         }
-        paragraph = Html.fromHtml(builder.toString());
+        paragraph = builder.toString();
     }
 
-    public Spanned getParagraph() {
+    protected ExtractParagraphModule(Parcel in) {
+        super(in);
+        paragraph = in.readString();
+    }
+
+    public static final Creator<ExtractParagraphModule> CREATOR = new Creator<ExtractParagraphModule>() {
+        @Override
+        public ExtractParagraphModule createFromParcel(Parcel in) {
+            return new ExtractParagraphModule(in);
+        }
+
+        @Override
+        public ExtractParagraphModule[] newArray(int size) {
+            return new ExtractParagraphModule[size];
+        }
+    };
+
+    public String getParagraph() {
         return paragraph;
     }
 
-    public void setParagraph(Spanned paragraph) {
+    public void setParagraph(String paragraph) {
         this.paragraph = paragraph;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+        dest.writeString(paragraph);
     }
 }

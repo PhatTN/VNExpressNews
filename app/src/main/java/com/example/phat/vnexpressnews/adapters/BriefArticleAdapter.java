@@ -26,8 +26,9 @@ public class BriefArticleAdapter extends RecyclerView.Adapter<BriefArticleAdapte
     private static final String TAG = makeLogTag(BriefArticleAdapter.class);
 
     /** Item type */
-    private static final int FULL_SPAN_TYPE = 0;
-    private static final int DEFAULT_SPAN_TYPE = 1;
+    private static final int DEFAULT_ITEM_TYPE = 0;
+    private static final int PERSPECTIVE_ITEM_TYPE = 1;
+    private static final int VIDEO_ITEM_TYPE = 2;
 
     /** Data set */
     private List<BriefArticle> mBriefArticleList;
@@ -45,9 +46,12 @@ public class BriefArticleAdapter extends RecyclerView.Adapter<BriefArticleAdapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
 
-        if (viewType == FULL_SPAN_TYPE) {
+        if (viewType == PERSPECTIVE_ITEM_TYPE) {
             v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.perspective_item, parent, false);
+        } else if (viewType == VIDEO_ITEM_TYPE) {
+            v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.video_item, parent, false);
         } else {
             v = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.brief_article_item, parent, false);
@@ -59,8 +63,8 @@ public class BriefArticleAdapter extends RecyclerView.Adapter<BriefArticleAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        // Handles FULL_SPAN_TYPE viewType
-        if (holder.viewType == FULL_SPAN_TYPE) {
+        // Handles PERSPECTIVE_ITEM_TYPE viewType
+        if (holder.viewType == PERSPECTIVE_ITEM_TYPE) {
             RecyclerView.LayoutParams layoutParams =
                     (RecyclerView.LayoutParams) holder.itemView.getLayoutParams();
             ((StaggeredGridLayoutManager.LayoutParams) layoutParams).setFullSpan(true);
@@ -83,12 +87,16 @@ public class BriefArticleAdapter extends RecyclerView.Adapter<BriefArticleAdapte
 
     @Override
     public int getItemViewType(int position) {
-        int categoryId = mBriefArticleList.get(position).getOriginalCategory();
-        if (categoryId == Config.DEFAULT_CATEGORY_ID_PERSPECTIVE) {
-            return FULL_SPAN_TYPE;
+        BriefArticle item = mBriefArticleList.get(position);
+        if (item.getOriginalCategory() == Config.DEFAULT_CATEGORY_ID_PERSPECTIVE) {
+            return PERSPECTIVE_ITEM_TYPE;
         }
 
-        return DEFAULT_SPAN_TYPE;
+        if (item.getArticleType() == BriefArticle.ARTICLE_TYPE_VIDEO) {
+            return VIDEO_ITEM_TYPE;
+        } else {
+            return DEFAULT_ITEM_TYPE;
+        }
     }
 
     @Override

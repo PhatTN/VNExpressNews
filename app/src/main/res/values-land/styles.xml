@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.VNExpress.VideoPlayer" parent="Theme.VNExpress">
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
+</resources>

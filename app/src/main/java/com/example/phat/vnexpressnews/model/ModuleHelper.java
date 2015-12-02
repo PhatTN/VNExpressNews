@@ -1,7 +1,5 @@
 package com.example.phat.vnexpressnews.model;
 
-import android.text.Html;
-
 import org.jsoup.nodes.Element;
 
 import java.util.ArrayList;
@@ -99,8 +97,7 @@ public class ModuleHelper {
         Module[] result = new Module[photoArr.length];
 
         for (int i = 0; i < photoArr.length; i++) {
-            result[i] = new PhotoModule(photoArr[i].getThumbnailUrl(),
-                    Html.fromHtml(photoArr[i].getCaption()));
+            result[i] = new PhotoModule(photoArr[i].getThumbnailUrl(), photoArr[i].getCaption());
         }
 
         return result;

@@ -189,6 +189,7 @@ public class BrowseNewsFragment extends Fragment
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        mRequestQueueManager.cancelPendingRequest(REQUEST_TAG_BRIEF_ARTICLE);
     }
 
     /** Loads brief article data from VNExpress Server */

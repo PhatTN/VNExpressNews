@@ -20,11 +20,17 @@
     <dimen name="cardview_margin">4dp</dimen>
     <dimen name="cardview_elevation">4dp</dimen>
 
+    <!-- Video Player -->
+    <!-- This dimension is set to video player when it doesn't play any video -->
+    <dimen name="video_player_height_when_empty">214dp</dimen>
+
     <!-- Brief Article Dimension -->
     <dimen name="brief_article_title_padding">16dp</dimen>
     <dimen name="brief_article_thumbnail_height">120dp</dimen>
     <dimen name="brief_article_title_main_padding">4dp</dimen>
     <dimen name="brief_article_title_main_margin">8dp</dimen>
+    <dimen name="video_icon_margin_top">8dp</dimen>
+    <dimen name="video_icon_margin_start">8dp</dimen>
 
     <!-- Paragraph & Module Dimension -->
     <dimen name="extract_paragraph_margin">16dp</dimen>

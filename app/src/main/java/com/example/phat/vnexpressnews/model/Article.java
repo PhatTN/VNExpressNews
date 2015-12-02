@@ -170,8 +170,15 @@ public class Article extends BriefArticle {
 
                 return result;
             case ARTICLE_TYPE_VIDEO:
+                Element[] elements = parseContent();
+
+                if (elements.length == 0) {
+                    return new ArrayList<>(0);
+                }
+
+                return ModuleHelper.convertFrom(elements);
             case ARTICLE_TYPE_VIDEOS:
-                // TODO will support these types soon
+                // TODO will support this type soon
                 return null;
             default:
                 return null;

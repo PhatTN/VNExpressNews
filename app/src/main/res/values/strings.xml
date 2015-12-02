@@ -6,7 +6,7 @@
 
     <string name="action_settings">Settings</string>
 
-    <!-- Menu item to open the news screen based on the category [CHAR_LIMIT=20] -->
+    <!-- Menu item to open the news screen based on the category -->
     <string name="navdrawer_item_home">Trang Nhất</string>
     <string name="navdrawer_item_news">Tin Tức</string>
     <string name="navdrawer_item_the_world">Thế Giới</string>
@@ -36,12 +36,15 @@
     <!-- Messages display to user -->
     <string name="no_network_connection">Unable to reach the VNExpress servers. Please check your connection and try again.</string>
     <string name="load_data_failed">Something was wrong when trying to request data from Server. Please try again!</string>
+    <string name="will_be_updated_function">This function will be updated soon!</string>
+    <string name="can_not_play_video">Can not play this video</string>
 
     <!-- Content description for Image View -->
     <string name="content_description_home_logo">VN Express News</string>
     <string name="content_description_article_thumbnail">Article Thumbnail</string>
     <string name="content_description_article_photo">Article Photo</string>
     <string name="content_description_infographic_photo">Info Graphic Photo</string>
+    <string name="content_description_video_icon">Video Icon</string>
 
     <!-- Transition names - shared elements -->
     <string name="transition_name_article_thumbnail" translatable="false">transition:ARTICLE_THUMBNAIL</string>
@@ -52,11 +55,16 @@
     <string name="title_activity_detail_article">Detail Article</string>
     <string name="title_activity_comment">Comments</string>
     <string name="title_activity_search_result">Search Result</string>
+    <string name="title_activity_video_player">Video Player</string>
 
     <!-- Toolbar Title -->
     <string name="toolbar_title_comments">Bình Luận</string>
+    <string name="toolbar_title_news">Tin Tức</string>
+    <string name="toolbar_title_video">Video</string>
 
     <!-- SearchView -->
     <string name="searchview_hint">Tìm Kiếm Tin Tức</string>
+
+    <string name="user_name_placeholder">Độc Giả</string>
 
 </resources>
