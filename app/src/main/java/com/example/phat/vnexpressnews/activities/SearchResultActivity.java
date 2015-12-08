@@ -75,7 +75,9 @@ public class SearchResultActivity extends BaseActivity
         mSearchResultFragment.onKeywordChanged(mAPIEndpointBuilder.build());
 
         // Clear focus of SearchView
-        mSearchView.clearFocus();
+        if (mSearchView != null) {
+            mSearchView.clearFocus();
+        }
     }
 
     @Override
