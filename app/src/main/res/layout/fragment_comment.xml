@@ -4,6 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:showIn="@layout/activity_comment"
-    tools:context="com.example.phat.vnexpressnews.fragments.CommentFragment">
+    tools:context="com.phattn.vnexpressnews.fragments.CommentFragment">
 
 </LinearLayout>

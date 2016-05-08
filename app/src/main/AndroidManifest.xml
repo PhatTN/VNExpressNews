@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.phat.vnexpressnews" >
+    package="com.phattn.vnexpressnews" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -50,7 +50,7 @@
             android:theme="@style/Theme.VNExpress.Comment" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.phat.vnexpressnews.activities.DetailArticleActivity" />
+                android:value="com.phattn.vnexpressnews.activities.DetailArticleActivity" />
         </activity>
 
         <activity
@@ -61,7 +61,7 @@
             android:theme="@style/Theme.VNExpress.SearchResult">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.phat.vnexpressnews.activities.BrowseNewsActivity" />
+                android:value="com.phattn.vnexpressnews.activities.BrowseNewsActivity" />
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -76,12 +76,12 @@
             android:theme="@style/Theme.VNExpress.VideoPlayer" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.phat.vnexpressnews.activities.BrowseNewsActivity" />
+                android:value="com.phattn.vnexpressnews.activities.BrowseNewsActivity" />
         </activity>
 
         <provider
             android:name=".provider.ArticleProvider"
-            android:authorities="com.example.phat.vnexpressnews"
+            android:authorities="com.phattn.vnexpressnews"
             android:exported="false"
             android:label="@string/app_name"
             android:syncable="false" />
