@@ -1,8 +1,12 @@
 package com.phattn.vnexpressnews.activities;
 
 import android.app.FragmentTransaction;
+import android.content.AsyncQueryHandler;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -10,6 +14,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,9 +24,13 @@ import com.phattn.vnexpressnews.Config;
 import com.phattn.vnexpressnews.R;
 import com.phattn.vnexpressnews.fragments.DetailArticleFragment;
 import com.phattn.vnexpressnews.model.Article;
+import com.phattn.vnexpressnews.provider.ArticleContract;
 
 public class DetailArticleActivity extends BaseActivity
         implements DetailArticleFragment.OnFragmentInteractionListener {
+
+    /** AsyncQueryHandler tokens */
+    private static final int QUERY_TOKEN_ARTICLE = 1000;
 
     /** Tags are used to pass/receive data to/from Intent/Bundle */
     public static final String TAG_ARTICLE_ID = Config.PACKAGE_NAME
@@ -93,10 +102,22 @@ public class DetailArticleActivity extends BaseActivity
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail_article, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:     // Handle UP button
                 NavUtils.navigateUpFromSameTask(this);
+                return true;
+            case R.id.bookmark:
+                // TODO save article here
+                Toast.makeText(DetailArticleActivity.this,
+                        R.string.will_be_updated_function, Toast.LENGTH_SHORT).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -167,5 +188,21 @@ public class DetailArticleActivity extends BaseActivity
     @Override
     public void onRecyclerViewHitTop() {
         expandAppBarLayout();
+    }
+
+    /**
+     * Handles insert article into DB in background thread
+     */
+    private class ArticleSavingHandler extends AsyncQueryHandler {
+
+        public ArticleSavingHandler(ContentResolver cr) {
+            super(cr);
+        }
+
+        @Override
+        protected void onInsertComplete(int token, Object cookie, Uri uri) {
+            MenuItem item = (MenuItem) cookie;
+            item.setIcon(R.drawable.ic_bookmark_check);
+        }
     }
 }

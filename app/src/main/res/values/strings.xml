@@ -62,6 +62,9 @@
     <string name="toolbar_title_news">Tin Tức</string>
     <string name="toolbar_title_video">Video</string>
 
+    <!-- Menu title -->
+    <string name="menu_title_bookmark">Lưu</string>
+
     <!-- SearchView -->
     <string name="searchview_hint">Tìm Kiếm Tin Tức</string>
 
