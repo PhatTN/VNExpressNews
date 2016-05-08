@@ -62,6 +62,11 @@
     <color name="sub_header_text_color">#FD7910</color>
     <color name="article_lead_text_color">#6D6C6C</color>
 
+    <!-- SwipeRefreshLayout icon colors -->
+    <color name="swipe_refresh_layout_first_color">@color/color_deep_orange</color>
+    <color name="swipe_refresh_layout_second_color">@color/color_indigo</color>
+    <color name="swipe_refresh_layout_third_color">@color/color_green</color>
+
     <!-- Activities colors -->
     <color name="white_background">#ffffffff</color>
 </resources>

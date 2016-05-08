@@ -5,6 +5,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -47,7 +49,8 @@ import static com.phattn.vnexpressnews.util.LogUtils.makeLogTag;
  * create an instance of this fragment.
  */
 public class BrowseNewsFragment extends Fragment
-        implements Response.Listener<Set<BriefArticle>>, Response.ErrorListener {
+        implements Response.Listener<Set<BriefArticle>>, Response.ErrorListener,
+        SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = makeLogTag(BrowseNewsFragment.class);
 
     /** Constrains indicate when use Volley RequestQueue */
@@ -65,6 +68,8 @@ public class BrowseNewsFragment extends Fragment
 
     /** Requesting and communication with network */
     private RequestQueueManager mRequestQueueManager;
+
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     /** Populates data to views */
     private RecyclerView mBriefArticleRV;
@@ -125,6 +130,15 @@ public class BrowseNewsFragment extends Fragment
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_browse_news, container, false);
+
+        // Set up SwipeRefreshLayout
+        mSwipeRefreshLayout = (SwipeRefreshLayout)
+                view.findViewById(R.id.swipeRefreshLayout);
+        mSwipeRefreshLayout.setColorSchemeResources(
+                R.color.swipe_refresh_layout_first_color,
+                R.color.swipe_refresh_layout_second_color,
+                R.color.swipe_refresh_layout_third_color);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
 
         // Sets up recycler view for brief article list
         setupRecyclerView(view);
@@ -220,6 +234,9 @@ public class BrowseNewsFragment extends Fragment
 
         // Notify to parent activity
         mListener.onRequestDataFailed();
+
+        // Hidden swipe refresh icon
+        mSwipeRefreshLayout.setRefreshing(false);
         // TODO allow user refresh when can not load data
     }
 
@@ -244,6 +261,9 @@ public class BrowseNewsFragment extends Fragment
         mBriefArticleList.addAll(briefArticles);
         mBriefArticleAdapter.notifyItemRangeInserted(0, mBriefArticleList.size());
         mBriefArticleRV.smoothScrollToPosition(0);
+
+        // Hide swipe refresh icon
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     /**
@@ -260,7 +280,9 @@ public class BrowseNewsFragment extends Fragment
         // Cancel current request
         mRequestQueueManager.cancelPendingRequest(REQUEST_TAG_BRIEF_ARTICLE);
 
-        mCurrentHandlerType = detectHandlerType(apiEndpointType);
+        if (apiEndpointType != null) {
+            mCurrentHandlerType = detectHandlerType(apiEndpointType);
+        }
         ((BriefArticlesHandler)mJSONHandler).setHandlerType(mCurrentHandlerType);
 
         // Start new request
@@ -299,6 +321,11 @@ public class BrowseNewsFragment extends Fragment
         // Adds item clicked event to recycler view
         OnBriefArticleClickedHandler handler = new OnBriefArticleClickedHandler(getActivity());
         ItemClickSupport.addTo(mBriefArticleRV).setOnItemClickListener(handler);
+    }
+
+    @Override
+    public void onRefresh() {
+        process(mAPIEndpoint, null);
     }
 
     /**
