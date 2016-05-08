@@ -3,8 +3,10 @@ package com.phattn.vnexpressnews.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Category implements Comparable<Category>, Parcelable {
     @JsonProperty(value = "category_id", required = true)
     private int categoryID;
