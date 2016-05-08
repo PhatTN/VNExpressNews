@@ -23,6 +23,7 @@ A simple news app. It allows people to read news, watch videos from [VNExpress.n
 * [Jsoup](http://jsoup.org/) - Java HTML Parser - learn more in [Jsoup site](http://jsoup.org/cookbook/)
 
 # <a name="tested-devices"></a>Tested Devices
+* Nexus 4 (Android 4.2.2 - API 17)
 * Nexus 4 (Android 5.1.1 - API 22)
 * Nexus S Emulator (Android 4.1.2 - API 16)
 * Nexus 5 Emulator (Android 6.0 - API 23)
