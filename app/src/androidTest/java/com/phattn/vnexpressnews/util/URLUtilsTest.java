@@ -31,7 +31,7 @@ public class URLUtilsTest {
 
     private static final String TEST_WEB_URL_CORRECT_FORMAT = "https://example.com/demo";
     private static final String TEST_WEB_URL_CORRECT_FORMAT_WITH_ARGUMENT = "http://www.example.com.vn/demo?arg1=hello&arg2=%20world";
-    private static final String TEST_WEB_URL_CORRECT_FORMAT_WITH_SQUARE_BRACKETS = "https://www.example/demo?api%5B%5D?arg1=value1";
+    private static final String TEST_WEB_URL_CORRECT_FORMAT_WITH_SQUARE_BRACKETS = "https://www.example.com/demo?api%5B%5D?arg1=value1";
     private static final String TEST_WEB_URL_INCORRECT_FORMAT_NO_DOMAIN_NAME = "HTtp://example/demo";
     private static final String TEST_WEB_URL_INCORRECT_FORMAT = "https://.example.com/demo";
     private static final String TEST_WEB_URL_INCORRECT_SCHEME = "file://example.com";
